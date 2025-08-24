@@ -7,7 +7,7 @@ const ServicePlans = () => {
   const plans = [
     {
       name: "Basic",
-      price: "KES 800",
+      price: "₦3,000",
       period: "per week",
       description: "Perfect for small households",
       icon: <Check className="w-6 h-6" />,
@@ -22,7 +22,7 @@ const ServicePlans = () => {
     },
     {
       name: "Executive",
-      price: "KES 1,500",
+      price: "₦5,000",
       period: "per week",
       description: "Great for medium households",
       icon: <Star className="w-6 h-6" />,
@@ -39,7 +39,7 @@ const ServicePlans = () => {
     },
     {
       name: "Premium",
-      price: "KES 2,500",
+      price: "₦10,000",
       period: "per week",
       description: "Ultimate convenience for busy families",
       icon: <Zap className="w-6 h-6" />,
