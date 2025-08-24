@@ -12,7 +12,7 @@ const ServicePlans = () => {
       description: "Perfect for small households",
       icon: <Check className="w-6 h-6" />,
       features: [
-        "One Weekly collection",
+        "One Weekly waste collection",
         "2 bin bags provided by WM",
         "Monday to Saturday service",
         "SMS notifications"
@@ -27,7 +27,7 @@ const ServicePlans = () => {
       description: "Great for medium households",
       icon: <Star className="w-6 h-6" />,
       features: [
-        "One Weekly collection",
+        "One Weekly waste collection",
         "4 bin bags provided by WM",
         "1 waste bin weekly",
         "Monday to Saturday service",
