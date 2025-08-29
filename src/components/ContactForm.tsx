@@ -93,8 +93,8 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+254 700 123 456</p>
-                    <p className="text-muted-foreground">+254 722 987 654</p>
+                    <p className="text-muted-foreground">+2348033036016</p>
+                    <p className="text-muted-foreground">+2348140506528</p>
                   </div>
                 </div>
               </CardContent>
