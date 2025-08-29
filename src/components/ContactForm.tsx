@@ -108,8 +108,8 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@wastemasters.co.ke</p>
-                    <p className="text-muted-foreground">support@wastemasters.co.ke</p>
+                    <p className="text-muted-foreground">info@wastemasters.com</p>
+                    <p className="text-muted-foreground">support@wastemasters.com</p>
                   </div>
                 </div>
               </CardContent>
