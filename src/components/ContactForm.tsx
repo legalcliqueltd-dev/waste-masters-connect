@@ -123,8 +123,9 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-1">Service Areas</h3>
-                    <p className="text-muted-foreground">Nairobi & Surrounding Areas</p>
-                    <p className="text-muted-foreground">Kiambu, Machakos, Kajiado</p>
+                    <p className="text-muted-foreground"><strong>Abuja</strong> - Central Area: Asokoro and Maitama, Garki, Wuse, Guzape, Jabi, Utako, Gwarinpa, Katamkpe, Life Camp.</p>
+                    <p className="text-muted-foreground"><strong>Lagos</strong> - Lekki, Ajah, Ikoyi, Victoria Island, Ikeja, Yaba and Ebute-Meta.</p>
+                    <p className="text-muted-foreground"><strong>Port Harcourt</strong> - Diobu, Trans-Amadi, Old Port Harcourt Town.</p>
                   </div>
                 </div>
               </CardContent>
