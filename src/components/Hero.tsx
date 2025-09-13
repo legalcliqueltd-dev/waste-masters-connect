@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-waste-collection.jpg";
+import heroImage from "@/assets/hero-waste-masters-tricycles.jpg";
 import { MapPin, Smartphone, Clock } from "lucide-react";
 
 const Hero = () => {
