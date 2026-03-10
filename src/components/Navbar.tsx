@@ -43,7 +43,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" aria-label="Waste Masters Limited — Home">
-          <img src={logo} alt="Waste Masters Limited" className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform duration-200" />
+          <img src={logo} alt="Waste Masters Limited" className="h-14 md:h-16 w-auto group-hover:scale-105 transition-transform duration-200 drop-shadow-md" />
         </Link>
 
         {/* Desktop Nav */}
