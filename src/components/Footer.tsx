@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/waste-masters-logo.jpg";
 
 const Footer = () => {
   return (
@@ -11,13 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-eco flex items-center justify-center text-primary-foreground font-bold">
-                WM
-              </div>
-              <div>
-                <span className="text-lg font-bold">Waste Masters</span>
-                <span className="block text-xs opacity-70 -mt-1">Limited</span>
-              </div>
+              <img src={logo} alt="Waste Masters Limited" className="h-14 w-auto" />
             </div>
             <p className="text-sm opacity-80 leading-relaxed mb-4">
               Professional, reliable, and environmentally responsible waste management across Nigeria. Smart Waste, Clean Spaces.
