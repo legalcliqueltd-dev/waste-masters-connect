@@ -43,13 +43,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" aria-label="Waste Masters Limited — Home">
-          <div className="w-10 h-10 rounded-full bg-gradient-eco flex items-center justify-center text-primary-foreground font-bold text-lg group-hover:scale-105 transition-transform duration-200">
-            WM
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-lg font-bold text-foreground">Waste Masters</span>
-            <span className="block text-xs text-muted-foreground -mt-1">Limited</span>
-          </div>
+          <img src={logo} alt="Waste Masters Limited" className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform duration-200" />
         </Link>
 
         {/* Desktop Nav */}
