@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-waste-masters-tricycles.jpg";
+import heroImage from "@/assets/hero-waste-truck.jpg";
 import { Shield, Zap, Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
