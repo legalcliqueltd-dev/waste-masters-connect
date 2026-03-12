@@ -9,12 +9,14 @@ import teamSupervisor from "@/assets/team-supervisor.jpg";
 import teamRecycling from "@/assets/team-recycling.jpg";
 import teamCs from "@/assets/team-cs.jpg";
 
+import teamCeo from "@/assets/team-ceo.jpg";
+
 const teamMembers = [
   {
-    name: "Obi Chukwuma",
-    role: "Managing Director",
-    photo: teamMd,
-    bio: "With over 15 years of experience in environmental services and business leadership, Obi founded Waste Masters with a vision to revolutionise waste management in Nigeria. He oversees company strategy, regulatory compliance, and drives the mission to make responsible disposal accessible to every community.",
+    name: "Dr. Ian Abraham Gobo",
+    role: "Founder & Chief Executive Officer",
+    photo: teamCeo,
+    bio: "",
   },
   {
     name: "Amina Ibrahim",
