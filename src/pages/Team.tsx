@@ -9,12 +9,14 @@ import teamSupervisor from "@/assets/team-supervisor.jpg";
 import teamRecycling from "@/assets/team-recycling.jpg";
 import teamCs from "@/assets/team-cs.jpg";
 
+import teamCeo from "@/assets/team-ceo.jpg";
+
 const teamMembers = [
   {
-    name: "Obi Chukwuma",
-    role: "Managing Director",
-    photo: teamMd,
-    bio: "With over 15 years of experience in environmental services and business leadership, Obi founded Waste Masters with a vision to revolutionise waste management in Nigeria. He oversees company strategy, regulatory compliance, and drives the mission to make responsible disposal accessible to every community.",
+    name: "Dr. Ian Abraham Gobo",
+    role: "Founder & Chief Executive Officer",
+    photo: teamCeo,
+    bio: "",
   },
   {
     name: "Amina Ibrahim",
@@ -73,15 +75,21 @@ const Team = () => {
                     />
                   </div>
                   <div className="p-8 md:p-10 flex flex-col justify-center">
-                    <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-1">Founder &amp; Leader</p>
+                    <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-1">Founder &amp; CEO</p>
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-1">{teamMembers[0].name}</h3>
                     <p className="text-primary font-medium mb-4">{teamMembers[0].role}</p>
-                    <p className="text-muted-foreground leading-relaxed">{teamMembers[0].bio}</p>
+                    <div className="text-muted-foreground leading-relaxed space-y-3 text-sm">
+                      <p>Dr. Ian Abraham Gobo is the Founder and Chief Executive Officer of Waste Masters Limited and a seasoned environmental management professional with over three decades of experience in solid waste management and environmental sanitation systems.</p>
+                      <p>Before founding Waste Masters Limited, Dr. Gobo served for more than twenty years with the Rivers State Environmental Sanitation Authority—now the Rivers State Waste Management Agency—where he held several administrative and operational leadership positions, including Head of Waste Operations.</p>
+                      <p>Dr. Gobo holds a Doctorate from Leeds Beckett University, United Kingdom. His doctoral research examined <em>"The Relationship Between Innovation Management and Increased Business Sustainability in SMEs Managing Solid Wastes in Nigeria."</em></p>
+                      <p>He is a Member of the Chartered Institution of Wastes Management (CIWM), United Kingdom, and a Fellow of the Waste Management Association of Nigeria (WAMASON).</p>
+                      <p>Through Waste Masters Limited, Dr. Gobo is applying his extensive public sector and industry experience to develop modern, technology-driven waste management solutions that support cleaner cities, environmental sustainability, and improved public health across Nigeria.</p>
+                    </div>
                     <div className="flex gap-3 mt-6">
                       <a href="#" className="w-9 h-9 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="LinkedIn">
                         <Linkedin className="w-4 h-4" />
                       </a>
-                      <a href="mailto:obi@wastemastersltd.com" className="w-9 h-9 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="Email">
+                      <a href="mailto:info@wastemastersltd.com" className="w-9 h-9 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="Email">
                         <Mail className="w-4 h-4" />
                       </a>
                     </div>
