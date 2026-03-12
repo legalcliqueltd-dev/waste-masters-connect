@@ -1,4 +1,4 @@
-import { Shield, Leaf, Users, Award, Target, Eye, Heart, Briefcase, CheckCircle, Recycle, TrendingDown, ArrowRight, Scale } from "lucide-react";
+import { Shield, Leaf, Users, Award, Target, Eye, Heart, Briefcase, CheckCircle, Recycle, TrendingDown, ArrowRight, Scale, GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -41,13 +41,16 @@ const About = () => {
               <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Who We Are</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Making Nigeria Cleaner, One Collection at a Time</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Waste Masters Limited is a professional waste management company dedicated to making waste disposal simple, affordable, and environmentally responsible for homes, businesses, and communities across Nigeria.
+                Waste Masters Limited is a professional waste management company committed to delivering efficient, affordable, and environmentally responsible waste solutions for homes, businesses, and communities across Nigeria.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Founded with a vision to transform how waste is handled in Nigerian cities, we combine modern technology — including GPS-tracked solar tricycles and SMS-based scheduling — with a deep commitment to environmental stewardship.
+                Founded to address the growing waste management challenges in Nigerian cities, the company integrates modern technology, innovative operational systems, and sustainable environmental practices to improve the way waste is collected, transported, and managed. Our approach combines GPS-enabled solar tricycles, digital scheduling systems, and trained field teams to deliver reliable and responsive services to our clients.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Waste Masters Limited provides a broad range of services including residential waste collection, commercial waste management, construction debris removal, house clearances, and environmental sanitation support. Our professional teams are committed to maintaining high standards of safety, efficiency, and environmental stewardship while helping communities maintain cleaner and healthier surroundings.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                From house clearances and construction debris to daily commercial pickups, our licensed teams handle every job with professionalism, speed, and care. We serve homeowners, landlords, property managers, construction companies, and businesses across Abuja, Lagos, and Port Harcourt.
+                We proudly serve homeowners, landlords, property managers, construction companies, and commercial organisations across major Nigerian cities including Abuja, Lagos, and Port Harcourt.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -167,8 +170,49 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Experience */}
+      {/* Leadership */}
       <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center">
+                  <GraduationCap className="w-6 h-6" />
+                </div>
+                <p className="text-primary font-semibold text-sm uppercase tracking-wider">Leadership</p>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Dr. Ian Abraham Gobo</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Waste Masters Limited is founded and led by Dr. Ian Abraham Gobo, an experienced environmental management professional with over 30 years of expertise in solid waste management and environmental sanitation systems.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Dr. Gobo previously served for more than two decades with the Rivers State Environmental Sanitation Authority, now known as the Rivers State Waste Management Agency, where he held several administrative and operational leadership roles, including Head of Waste Operations. During his public service career, he gained extensive experience in waste collection systems management, operational planning, environmental compliance, and public sanitation administration.
+              </p>
+            </div>
+            <div>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                He holds a Doctorate from Leeds Beckett University, where his research examined:
+              </p>
+              <Card className="shadow-card p-6 mb-6 border-l-4 border-l-primary">
+                <CardContent className="p-0">
+                  <p className="text-foreground italic leading-relaxed">
+                    "The Relationship Between Innovation Management and Increased Business Sustainability in SMEs Managing Solid Wastes in Nigeria."
+                  </p>
+                </CardContent>
+              </Card>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                His work focuses on how innovation, operational efficiency, and technology can strengthen the sustainability and performance of waste management enterprises in Nigeria.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Through Waste Masters Limited, Dr. Gobo is applying his decades of public sector and industry experience to develop modern, technology-driven waste solutions that promote cleaner cities, environmental sustainability, and improved public health across Nigeria.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Experience */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-14">
             <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Our Track Record</p>
