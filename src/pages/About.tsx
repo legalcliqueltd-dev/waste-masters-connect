@@ -41,13 +41,16 @@ const About = () => {
               <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Who We Are</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Making Nigeria Cleaner, One Collection at a Time</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Waste Masters Limited is a professional waste management company dedicated to making waste disposal simple, affordable, and environmentally responsible for homes, businesses, and communities across Nigeria.
+                Waste Masters Limited is a professional waste management company committed to delivering efficient, affordable, and environmentally responsible waste solutions for homes, businesses, and communities across Nigeria.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Founded with a vision to transform how waste is handled in Nigerian cities, we combine modern technology — including GPS-tracked solar tricycles and SMS-based scheduling — with a deep commitment to environmental stewardship.
+                Founded to address the growing waste management challenges in Nigerian cities, the company integrates modern technology, innovative operational systems, and sustainable environmental practices to improve the way waste is collected, transported, and managed. Our approach combines GPS-enabled solar tricycles, digital scheduling systems, and trained field teams to deliver reliable and responsive services to our clients.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Waste Masters Limited provides a broad range of services including residential waste collection, commercial waste management, construction debris removal, house clearances, and environmental sanitation support. Our professional teams are committed to maintaining high standards of safety, efficiency, and environmental stewardship while helping communities maintain cleaner and healthier surroundings.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                From house clearances and construction debris to daily commercial pickups, our licensed teams handle every job with professionalism, speed, and care. We serve homeowners, landlords, property managers, construction companies, and businesses across Abuja, Lagos, and Port Harcourt.
+                We proudly serve homeowners, landlords, property managers, construction companies, and commercial organisations across major Nigerian cities including Abuja, Lagos, and Port Harcourt.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
