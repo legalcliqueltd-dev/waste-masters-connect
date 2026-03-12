@@ -1,4 +1,4 @@
-import { Shield, Leaf, Users, Award, Target, Eye, Heart, Briefcase, CheckCircle, Recycle, TrendingDown, ArrowRight, Scale } from "lucide-react";
+import { Shield, Leaf, Users, Award, Target, Eye, Heart, Briefcase, CheckCircle, Recycle, TrendingDown, ArrowRight, Scale, GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
