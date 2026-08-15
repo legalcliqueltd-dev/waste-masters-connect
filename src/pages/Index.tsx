@@ -11,10 +11,10 @@ import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Reveal from "@/components/Reveal";
 
-import galleryHouseLoading from "@/assets/gallery-house-loading.jpg";
 import galleryConstruction1 from "@/assets/gallery-construction-1.jpg";
-import galleryGarden1 from "@/assets/gallery-garden-1.jpg";
 import galleryCommercial1 from "@/assets/gallery-commercial-1.jpg";
+import truck0085 from "@/assets/truck-0085.jpg.asset.json";
+import truck0089 from "@/assets/truck-0089.jpg.asset.json";
 
 /* ── Services ── */
 const services = [
@@ -37,9 +37,9 @@ const whyUs = [
 
 /* ── Gallery ── */
 const galleryImages = [
-  { src: galleryHouseLoading, alt: "House clearance — furniture being loaded for disposal" },
+  { src: truck0085.url, alt: "Waste Masters DAF CF compactor truck ready for collection" },
   { src: galleryConstruction1, alt: "Construction site waste removal in progress" },
-  { src: galleryGarden1, alt: "Garden waste collection with solar tricycle" },
+  { src: truck0089.url, alt: "Side view of a Waste Masters refuse compactor truck" },
   { src: galleryCommercial1, alt: "Commercial office waste clearance" },
 ];
 
