@@ -2,97 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ─────────────────────────────────────────────────────────────
+   Waste Masters Limited — design system
+   Palette is sampled directly from the company logo:
+   navy #0A3A68 · brand blue #0581E3 · recycle green #31AE48
+   All colours MUST be HSL.
+   ───────────────────────────────────────────────────────────── */
 
 @layer base {
   :root {
-    /* Waste Masters Professional Palette */
+    /* ── Type: a civic-signage display, a warm body face, and a
+       monospace for the operational data the business runs on. ── */
+    --font-display: "Archivo", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+    --font-body: "Instrument Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+
+    /* ── Brand primitives (straight off the logo) ── */
+    --navy: 209 82% 22%;
+    --navy-deep: 209 74% 13%;
+    --navy-soft: 209 45% 32%;
+    --blue: 206 96% 45%;
+    --blue-ink: 208 92% 31%;
+    --blue-wash: 205 72% 95%;
+    --green: 131 56% 44%;
+    --green-ink: 133 62% 28%;
+    --green-wash: 133 45% 95%;
+
+    /* ── Surfaces ── */
     --background: 0 0% 100%;
-    --foreground: 210 11% 15%;
+    --foreground: 211 44% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 11% 15%;
+    --card-foreground: 211 44% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 11% 15%;
+    --popover-foreground: 211 44% 12%;
 
-    /* Eco-Green Primary */
-    --primary: 142 69% 35%;
-    --primary-foreground: 0 0% 98%;
-    --primary-light: 142 45% 45%;
-    --primary-dark: 142 69% 25%;
+    /* ── Action: recycle green. Deep enough to carry white text. ── */
+    --primary: 133 62% 30%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 131 56% 44%;
+    --primary-dark: 134 68% 21%;
 
-    /* Professional Secondary */
-    --secondary: 210 20% 95%;
-    --secondary-foreground: 210 11% 15%;
+    --secondary: 205 40% 96%;
+    --secondary-foreground: 209 82% 22%;
 
-    --muted: 210 20% 95%;
-    --muted-foreground: 210 11% 45%;
+    --muted: 205 40% 96%;
+    --muted-foreground: 209 20% 40%;
 
-    /* Trust Blue Accent */
-    --accent: 213 94% 68%;
-    --accent-foreground: 0 0% 98%;
-    --accent-light: 213 94% 78%;
+    /* Accent is the neutral UI hover wash shadcn expects.
+       For the vivid brand blue use the `brand-blue` utilities. */
+    --accent: 205 62% 94%;
+    --accent-foreground: 209 82% 22%;
+    --accent-light: 205 72% 97%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 4 74% 46%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 95%;
-    --ring: 142 69% 35%;
+    --border: 208 26% 89%;
+    --input: 208 26% 86%;
+    --ring: 133 62% 30%;
 
-    /* Custom Gradients */
-    --gradient-eco: linear-gradient(135deg, hsl(142 69% 35%), hsl(142 45% 45%));
-    --gradient-hero: linear-gradient(135deg, hsl(142 69% 35%), hsl(213 94% 68%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 20% 98%));
-    
-    /* Shadows */
-    --shadow-eco: 0 10px 30px -5px hsl(142 69% 35% / 0.2);
-    --shadow-professional: 0 4px 20px -2px hsl(210 11% 15% / 0.1);
-    --shadow-card: 0 2px 15px -3px hsl(210 11% 15% / 0.08);
+    /* ── Gradients ── */
+    --gradient-eco: linear-gradient(145deg, hsl(133 62% 32%), hsl(131 56% 46%));
+    --gradient-hero: linear-gradient(135deg, hsl(209 74% 13%), hsl(206 96% 40%));
+    --gradient-navy: linear-gradient(158deg, hsl(209 74% 13%), hsl(209 78% 20%));
+    --gradient-card: linear-gradient(160deg, hsl(0 0% 100%), hsl(205 40% 98%));
 
-    --radius: 0.5rem;
+    /* ── Shadows: tinted navy, never neutral grey ── */
+    --shadow-card:
+      0 1px 2px hsl(209 45% 18% / 0.05),
+      0 10px 26px -14px hsl(209 45% 18% / 0.16);
+    --shadow-professional:
+      0 2px 4px hsl(209 45% 18% / 0.06),
+      0 20px 44px -20px hsl(209 45% 18% / 0.24);
+    --shadow-eco:
+      0 2px 6px hsl(133 60% 20% / 0.14),
+      0 22px 44px -22px hsl(133 60% 22% / 0.42);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
+
+    --sidebar-background: 205 40% 98%;
+    --sidebar-foreground: 211 44% 12%;
+    --sidebar-primary: 209 82% 22%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 205 62% 94%;
+    --sidebar-accent-foreground: 209 82% 22%;
+    --sidebar-border: 208 26% 89%;
+    --sidebar-ring: 133 62% 30%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 209 60% 8%;
+    --foreground: 205 34% 96%;
+    --card: 209 52% 11%;
+    --card-foreground: 205 34% 96%;
+    --popover: 209 52% 11%;
+    --popover-foreground: 205 34% 96%;
+    --primary: 131 56% 44%;
+    --primary-foreground: 209 74% 9%;
+    --primary-light: 131 52% 56%;
+    --primary-dark: 133 62% 30%;
+    --secondary: 209 40% 17%;
+    --secondary-foreground: 205 34% 96%;
+    --muted: 209 40% 17%;
+    --muted-foreground: 205 18% 70%;
+    --accent: 209 40% 19%;
+    --accent-foreground: 205 34% 96%;
+    --accent-light: 209 40% 24%;
+    --destructive: 4 66% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 209 34% 20%;
+    --input: 209 34% 24%;
+    --ring: 131 56% 44%;
+    --blue-wash: 209 40% 19%;
+    --green-wash: 209 40% 19%;
+    --gradient-card: linear-gradient(160deg, hsl(209 52% 12%), hsl(209 52% 10%));
+    --sidebar-background: 209 60% 8%;
+    --sidebar-foreground: 205 34% 96%;
+    --sidebar-primary: 131 56% 44%;
+    --sidebar-primary-foreground: 209 74% 9%;
+    --sidebar-accent: 209 40% 17%;
+    --sidebar-accent-foreground: 205 34% 96%;
+    --sidebar-border: 209 34% 20%;
+    --sidebar-ring: 131 56% 44%;
   }
 }
 
@@ -101,26 +134,87 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
-
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
-  /* Focus visible styles for accessibility */
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display face carries the personality: Archivo, slightly expanded,
+     tightened tracking, the way fleet livery and civic signage is set. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 106;
+    letter-spacing: -0.021em;
+    text-wrap: balance;
+    color: hsl(var(--foreground));
+  }
+
+  h1 {
+    font-size: clamp(2.0625rem, 1.45rem + 2.6vw, 3.75rem);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -0.032em;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 1.42rem + 1.75vw, 2.6rem);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.026em;
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 1.09rem + 0.5vw, 1.5rem);
+    line-height: 1.2;
+    font-weight: 650;
+  }
+
+  h4 {
+    font-size: 1.0625rem;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Numerals in data contexts should line up in columns. */
+  .tabular, table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: hsl(var(--green) / 0.28);
+    color: hsl(var(--foreground));
+  }
+
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary rounded-sm;
+    outline: 2px solid hsl(var(--green-ink));
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
-  /* Reduced motion preference */
+  /* Dark surfaces need a focus ring that survives the background. */
+  .on-navy :focus-visible,
+  .on-navy:focus-visible {
+    outline-color: hsl(131 56% 56%);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
     html {
       scroll-behavior: auto;
@@ -128,13 +222,120 @@ All colors MUST be HSL.
   }
 }
 
-@layer utilities {
-  /* Hover scale utility */
-  .hover-scale {
-    @apply transition-transform duration-200 hover:scale-105;
+@layer components {
+  /* ── Eyebrow / micro-label: the waste-transfer-note voice ── */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: hsl(var(--green-ink));
   }
 
-  /* Story link underline animation */
+  .eyebrow-on-navy {
+    color: hsl(131 52% 62%);
+  }
+
+  /* Eyebrow with the green tick rule to its left. */
+  .eyebrow-rule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .eyebrow-rule::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.85;
+    flex: none;
+  }
+
+  /* ── Dispatch rail: hairline-divided operational facts. ──
+     The signature device. Real numbers only, never decoration. */
+  .rail {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (min-width: 768px) {
+    .rail {
+      grid-template-columns: repeat(var(--rail-cols, 4), minmax(0, 1fr));
+    }
+  }
+
+  .rail-cell {
+    padding: 0.875rem 1.125rem;
+    border-top: 1px solid var(--rail-line, hsl(var(--border)));
+    border-right: 1px solid var(--rail-line, hsl(var(--border)));
+    min-width: 0;
+  }
+  .rail-cell:nth-child(2n) {
+    border-right: 0;
+  }
+  @media (min-width: 768px) {
+    .rail-cell {
+      border-top: 0;
+      border-right: 1px solid var(--rail-line, hsl(var(--border)));
+      padding: 0.5rem 1.5rem;
+    }
+    .rail-cell:nth-child(2n) {
+      border-right: 1px solid var(--rail-line, hsl(var(--border)));
+    }
+    .rail-cell:last-child {
+      border-right: 0;
+    }
+  }
+
+  .rail-key {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .rail-value {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 104;
+    font-weight: 650;
+    font-size: 0.9375rem;
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Lead paragraph under a heading ── */
+  .lead {
+    font-size: clamp(1.0625rem, 1rem + 0.42vw, 1.3125rem);
+    line-height: 1.55;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* ── Stat figure ── */
+  .figure {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 108;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 106;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-[1.03];
+  }
+
   .story-link > * {
     @apply relative inline-block;
   }
@@ -144,5 +345,11 @@ All colors MUST be HSL.
   }
   .story-link:hover > *::after {
     @apply scale-x-100 origin-bottom-left;
+  }
+
+  /* Photographs sit on light surfaces, so they need a hairline
+     to stop them floating off the page. */
+  .photo-edge {
+    box-shadow: inset 0 0 0 1px hsl(209 45% 18% / 0.1);
   }
 }

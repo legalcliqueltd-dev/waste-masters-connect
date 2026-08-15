@@ -1,113 +1,110 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   HardHat, Building2, KeyRound, Store, Home,
-  Shield, Leaf, Handshake, Star, ArrowRight, Phone, CheckCircle, Quote,
+  Shield, Leaf, Handshake, Star, ArrowRight, Phone, Check,
 } from "lucide-react";
+import PageHeader from "@/components/PageHeader";
+import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
-/* ── Client Categories ── */
 const clientCategories = [
   {
-    icon: <HardHat className="w-8 h-8" />,
-    title: "Construction Companies",
-    desc: "We partner with builders, contractors, and developers to provide fast, compliant removal of rubble, timber, plasterboard, and renovation debris — keeping sites safe and projects on schedule.",
-    examples: ["Site waste clearance", "Rubble & debris removal", "Scheduled skip alternatives", "Post-demolition clean-up"],
+    icon: HardHat,
+    title: "Construction companies",
+    desc: "Builders, contractors and developers who need rubble, timber, plasterboard and renovation debris off site fast, without the compliance headache.",
+    examples: ["Site waste clearance", "Rubble and debris removal", "Skip alternatives", "Post-demolition clean-up"],
   },
   {
-    icon: <Building2 className="w-8 h-8" />,
-    title: "Property Managers",
-    desc: "Residential estates and apartment complexes rely on Waste Masters for dependable, scheduled waste collection that keeps communal areas clean and residents satisfied.",
+    icon: Building2,
+    title: "Property managers",
+    desc: "Residential estates and apartment complexes that need scheduled collection keeping communal areas clean and residents quiet.",
     examples: ["Estate-wide collection", "Bulky item removal", "Recycling programmes", "Seasonal clean-ups"],
   },
   {
-    icon: <KeyRound className="w-8 h-8" />,
-    title: "Estate Agents",
-    desc: "When properties need clearing for viewings, sales, or new tenants, our rapid house clearance service ensures spaces are spotless and ready — often within 24 hours.",
-    examples: ["Pre-sale property clearance", "End-of-tenancy clean-outs", "Furniture removal", "Same-day turnaround"],
+    icon: KeyRound,
+    title: "Estate agents",
+    desc: "Properties cleared for viewings, sales or new tenants. Spotless and ready, often inside twenty four hours.",
+    examples: ["Pre-sale clearance", "End-of-tenancy clean-outs", "Furniture removal", "Same-day turnaround"],
   },
   {
-    icon: <Store className="w-8 h-8" />,
-    title: "Local Businesses",
-    desc: "From restaurants and retail shops to hotels and offices, we deliver flexible commercial waste collection tailored to your hours and volume — with full compliance documentation.",
-    examples: ["Daily or weekly pickups", "Food & packaging waste", "Office clearance", "Recycling reports"],
+    icon: Store,
+    title: "Local businesses",
+    desc: "Restaurants, shops, hotels and offices, with collection timed around your trading hours and full compliance documentation.",
+    examples: ["Daily or weekly pickups", "Food and packaging waste", "Office clearance", "Recycling reports"],
   },
   {
-    icon: <Home className="w-8 h-8" />,
+    icon: Home,
     title: "Homeowners",
-    desc: "Thousands of households across Abuja, Lagos, and Port Harcourt trust us for reliable weekly waste collection, garden clearance, and one-off bulky item disposal.",
+    desc: "Thousands of households across Abuja, Lagos and Port Harcourt on weekly collection, garden clearance and one-off bulky disposal.",
     examples: ["Weekly scheduled collection", "Garden waste removal", "Furniture disposal", "House clearance"],
   },
 ];
 
-/* ── Testimonials ── */
 const testimonials = [
   {
     name: "Engr. Babajide Omotayo",
     role: "Project Director, GreenBuild Construction",
     initials: "BO",
-    rating: 5,
-    quote: "Waste Masters clears our construction sites faster than any service we've used before. Their team is professional, punctual, and understands the urgency of keeping a building site clean and compliant. Highly recommended for any contractor.",
+    quote:
+      "They clear our sites faster than any service we have used. The crews understand that a building site cannot sit still waiting for a skip.",
   },
   {
     name: "Adaeze Okafor",
     role: "Estate Manager, Oakwood Residences",
     initials: "AO",
-    rating: 5,
-    quote: "Managing waste for 200+ apartments was a headache until we partnered with Waste Masters. Their scheduled collections are always on time, the communal areas stay spotless, and residents constantly praise the service.",
+    quote:
+      "Waste for 200 apartments used to be a headache. Collections are on time, the communal areas stay clean and the residents notice.",
   },
   {
     name: "Chidi Nnaji",
     role: "Owner, FreshMart Supermarket",
     initials: "CN",
-    rating: 5,
-    quote: "As a food retailer, reliable daily waste collection is non-negotiable. Waste Masters delivers every single day without fail. Their pricing is transparent and the recycling reports help us meet our sustainability targets.",
+    quote:
+      "Daily collection for a food retailer is not optional. They have never missed one, and the recycling reports help us hit our targets.",
   },
   {
     name: "Amaka Eze",
     role: "Lettings Manager, Metro Properties",
     initials: "AE",
-    rating: 5,
-    quote: "We use Waste Masters for every end-of-tenancy clearance. They turn properties around in hours — furniture, appliances, everything gone and the place left swept clean. It's made our job so much easier.",
+    quote:
+      "We use them for every end-of-tenancy clearance. Furniture, appliances, everything gone, and the place left swept clean.",
   },
   {
     name: "Ibrahim Musa",
     role: "Homeowner, Gwarinpa, Abuja",
     initials: "IM",
-    rating: 5,
-    quote: "The basic plan is perfect for my family. Great value, the workers are always courteous, and the SMS notifications mean I never miss a collection day. I've recommended them to all my neighbours.",
+    quote:
+      "Good value for a family our size. The SMS notification means I never miss a collection day, and the crew are always courteous.",
   },
   {
     name: "Grace Adeleke",
     role: "Office Manager, TechVille Hub",
     initials: "GA",
-    rating: 5,
-    quote: "Professional, efficient, and environmentally conscious. Waste Masters transformed our office waste management. The fact that they recycle 90% of what they collect gives our company real ESG credibility.",
+    quote:
+      "They recycle 90% of what they collect and give us the paperwork. That gives our company real standing on its ESG reporting.",
   },
 ];
 
-/* ── Trust Indicators ── */
 const trustIndicators = [
   {
-    icon: <Shield className="w-8 h-8" />,
-    title: "Licensed Waste Carrier",
-    desc: "Fully licensed and compliant with Nigerian environmental regulations. Every job is documented and traceable.",
+    icon: Shield,
+    title: "Licensed waste carrier",
+    desc: "Fully licensed and compliant with Nigerian environmental regulation. Every job documented and traceable.",
   },
   {
-    icon: <Leaf className="w-8 h-8" />,
-    title: "Environmentally Responsible Disposal",
-    desc: "Up to 90% of collected waste is diverted from landfills through recycling, composting, and certified processing partners.",
+    icon: Leaf,
+    title: "Responsible disposal",
+    desc: "Up to 90% of collected waste diverted from landfill through recycling, composting and certified partners.",
   },
   {
-    icon: <Handshake className="w-8 h-8" />,
-    title: "Reliable Waste Removal Partner",
-    desc: "98% customer satisfaction rate. On-time collections, transparent pricing, and dedicated account management for commercial clients.",
+    icon: Handshake,
+    title: "A partner, not a supplier",
+    desc: "98% satisfaction, on-time collections, transparent pricing and a named account manager for commercial clients.",
   },
 ];
 
-/* ── Client logos placeholder ── */
 const clientNames = [
   "GreenBuild Construction",
   "Oakwood Residences",
@@ -119,197 +116,229 @@ const clientNames = [
   "PrimeLand Developers",
 ];
 
-const StarRating = ({ rating }: { rating: number }) => (
-  <div className="flex gap-0.5">
-    {[1, 2, 3, 4, 5].map((s) => (
-      <Star
-        key={s}
-        className={`h-4 w-4 ${s <= rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"}`}
-      />
-    ))}
-  </div>
-);
+const contractPoints = [
+  "Tailored collection schedules",
+  "A named account manager",
+  "Volume-based pricing",
+  "Recycling and compliance reports",
+  "Same-day urgent service",
+  "Multi-site coverage",
+];
 
-const Clients = () => {
-  return (
-    <>
-      {/* Hero */}
-      <section className="bg-gradient-eco text-primary-foreground py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm uppercase tracking-wider opacity-80 font-semibold mb-3">Our Clients</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Trusted Across Nigeria</h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            From construction companies and property managers to local businesses and homeowners — see who relies on Waste Masters for professional waste management.
-          </p>
+const Clients = () => (
+  <>
+    <PageHeader
+      eyebrow="Our clients"
+      title="Trusted across Nigeria"
+      lead="Construction companies, property managers, local businesses and thousands of households rely on our crews six days a week."
+      rail={[
+        { label: "Client satisfaction", value: "98%" },
+        { label: "Collections", value: "500+ completed" },
+        { label: "Contract types", value: "One-off and scheduled" },
+        { label: "Account management", value: "Named contact" },
+      ]}
+    />
+
+    {/* Client names */}
+    <section className="border-b border-border py-14" aria-label="Client organisations">
+      <div className="container mx-auto">
+        <p className="mb-8 text-center font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          Organisations that trust Waste Masters
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-12">
+          {clientNames.map((name, i) => (
+            <Reveal key={name} delay={i * 50}>
+              <span className="font-display text-[0.9375rem] font-semibold tracking-tight text-muted-foreground transition-colors duration-300 hover:text-brand-navy">
+                {name}
+              </span>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Client Logos Bar */}
-      <section className="py-10 bg-foreground text-background">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-xs uppercase tracking-wider font-semibold opacity-50 mb-6">
-            Businesses &amp; organisations that trust Waste Masters
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 max-w-6xl mx-auto">
-            {clientNames.map((name, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center h-14 rounded-lg bg-background/5 border border-background/10 px-3"
+    {/* Categories */}
+    <section className="py-section" aria-labelledby="categories-heading">
+      <div className="container mx-auto">
+        <SectionHeading
+          id="categories-heading"
+          align="left"
+          eyebrow="Who we serve"
+          title="Five kinds of client, one standard"
+          lead="The waste is different every time. The licensing, the documentation and the turnaround are not."
+          className="mb-14"
+        />
+
+        <div className="overflow-hidden rounded-lg border border-border">
+          {clientCategories.map((cat, i) => {
+            const Icon = cat.icon;
+            return (
+              <Reveal
+                key={cat.title}
+                delay={i * 70}
+                className="border-b border-border bg-background last:border-b-0"
               >
-                <span className="text-xs font-semibold opacity-70 text-center whitespace-nowrap">{name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <div className="grid gap-6 p-7 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-8 lg:p-9">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-md bg-brand-green-wash text-brand-green-ink">
+                    <Icon className="h-[1.375rem] w-[1.375rem]" aria-hidden="true" />
+                  </span>
 
-      {/* Client Categories */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-14">
-            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Who We Serve</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Client Categories</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We provide tailored waste management solutions for every type of client — residential, commercial, and industrial.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {clientCategories.map((cat, i) => (
-              <Card key={i} className="shadow-card hover:shadow-eco transition-all duration-300 overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid md:grid-cols-[auto_1fr_auto] items-center gap-6 p-6 md:p-8">
-                    {/* Icon */}
-                    <div className="w-16 h-16 rounded-xl bg-gradient-eco text-primary-foreground flex items-center justify-center flex-shrink-0 mx-auto md:mx-0">
-                      {cat.icon}
-                    </div>
-
-                    {/* Content */}
-                    <div className="text-center md:text-left">
-                      <h3 className="text-xl font-semibold text-foreground mb-2">{cat.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">{cat.desc}</p>
-                      <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                        {cat.examples.map((ex, j) => (
-                          <Badge key={j} variant="secondary" className="text-xs font-normal">
-                            {ex}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="flex-shrink-0 text-center">
-                      <Link to="/contact">
-                        <Button variant="outline" size="sm" className="gap-1.5">
-                          Get a Quote <ArrowRight className="w-3.5 h-3.5" />
-                        </Button>
-                      </Link>
+                  <div>
+                    <h3 className="mb-2">{cat.title}</h3>
+                    <p className="mb-4 max-w-2xl text-[0.9375rem] leading-relaxed text-muted-foreground">
+                      {cat.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {cat.examples.map((ex) => (
+                        <Badge key={ex} variant="docket">
+                          {ex}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+
+                  <Link to="/contact" className="md:justify-self-end">
+                    <Button variant="outline" size="sm" className="gap-1.5">
+                      Get a quote
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </Button>
+                  </Link>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Trust Indicators */}
-      <section className="py-20 bg-muted/40">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Why Trust Us</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Your Trusted Waste Partner</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {trustIndicators.map((t, i) => (
-              <Card key={i} className="text-center p-8 shadow-professional">
-                <CardContent className="p-0">
-                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center">
-                    {t.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">{t.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{t.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Testimonials</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear from the businesses and homeowners who trust Waste Masters every day.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {testimonials.map((t, i) => (
-              <Card key={i} className="shadow-card hover:shadow-eco transition-all duration-300">
-                <CardContent className="p-6">
-                  <Quote className="w-8 h-8 text-primary/20 mb-3" />
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 italic">
-                    "{t.quote}"
+    {/* Trust */}
+    <section className="border-y border-border bg-secondary/50 py-section" aria-labelledby="trust-heading">
+      <div className="container mx-auto">
+        <SectionHeading
+          id="trust-heading"
+          align="left"
+          eyebrow="Why trust us"
+          title="What a licensed carrier owes you"
+          className="mb-14"
+        />
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-3">
+          {trustIndicators.map((t, i) => {
+            const Icon = t.icon;
+            return (
+              <Reveal key={t.title} delay={i * 90} className="bg-background">
+                <div className="h-full p-8 lg:p-9">
+                  <span className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-brand-navy text-white">
+                    <Icon className="h-[1.375rem] w-[1.375rem]" aria-hidden="true" />
+                  </span>
+                  <h3 className="mb-3">{t.title}</h3>
+                  <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {t.desc}
                   </p>
-                  <div className="flex items-center gap-3">
-                    <Avatar className="w-10 h-10">
-                      <AvatarFallback className="bg-gradient-eco text-primary-foreground text-xs font-bold">
-                        {t.initials}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-foreground truncate">{t.name}</p>
-                      <p className="text-xs text-muted-foreground truncate">{t.role}</p>
-                    </div>
-                  </div>
-                  <div className="mt-3">
-                    <StarRating rating={t.rating} />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Commercial Contract CTA */}
-      <section className="py-20 bg-foreground text-background">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Need a Commercial Waste Service Contract?
-          </h2>
-          <p className="text-lg opacity-80 leading-relaxed mb-6 max-w-2xl mx-auto">
-            Whether you manage a construction site, residential estate, office block, or retail space — we design bespoke waste management contracts with flexible scheduling, transparent pricing, and full compliance documentation.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-4 max-w-lg mx-auto mb-10">
-            {["Tailored collection schedules", "Dedicated account manager", "Volume-based pricing", "Recycling & compliance reports", "Same-day urgent service", "Multi-site coverage"].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm opacity-80">
-                <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="text-lg px-8 py-6 gap-2 bg-primary text-primary-foreground hover:bg-primary-dark">
-                Request a Contract Quote <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
-            <a href="tel:+2348033036016">
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 gap-2 border-background/30 text-background hover:bg-background hover:text-foreground">
-                <Phone className="w-5 h-5" /> Call Us Directly
-              </Button>
-            </a>
-          </div>
+    {/* Testimonials */}
+    <section className="py-section" aria-labelledby="client-testimonials">
+      <div className="container mx-auto">
+        <SectionHeading
+          id="client-testimonials"
+          align="left"
+          eyebrow="Testimonials"
+          title="In their words"
+          className="mb-14"
+        />
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <Reveal key={t.name} delay={i * 60} className="bg-background">
+              <figure className="flex h-full flex-col p-7 lg:p-8">
+                <div className="mb-5 flex gap-0.5" aria-label="Rated 5 out of 5">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star key={s} className="h-3.5 w-3.5 fill-brand-green text-brand-green" aria-hidden="true" />
+                  ))}
+                </div>
+                <blockquote className="flex-1 text-[0.9375rem] leading-relaxed text-foreground/85">
+                  {t.quote}
+                </blockquote>
+                <figcaption className="mt-7 flex items-center gap-3.5 border-t border-border pt-5">
+                  <span
+                    className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-brand-navy font-display text-xs font-bold text-white"
+                    aria-hidden="true"
+                  >
+                    {t.initials}
+                  </span>
+                  <span>
+                    <span className="block text-[0.9375rem] font-semibold text-foreground">
+                      {t.name}
+                    </span>
+                    <span className="block text-[0.8125rem] text-muted-foreground">
+                      {t.role}
+                    </span>
+                  </span>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
         </div>
-      </section>
-    </>
-  );
-};
+      </div>
+    </section>
+
+    {/* Contract CTA */}
+    <section className="on-navy relative overflow-hidden bg-gradient-navy py-section" aria-labelledby="contract-heading">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 top-0 h-[30rem] w-[30rem] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, hsl(var(--blue)) 0%, transparent 68%)" }}
+      />
+      <div className="container relative mx-auto">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <p className="eyebrow eyebrow-on-navy eyebrow-rule mb-6">Commercial contracts</p>
+            <h2 id="contract-heading" className="text-white">
+              Waste on a contract, not a phone call every week
+            </h2>
+            <p className="lead mt-5 text-white/70">
+              Construction sites, residential estates, office blocks and retail
+              space. We build the schedule around your operation, price it on
+              volume, and document every load.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link to="/contact">
+                <Button size="lg" className="w-full gap-2 sm:w-auto">
+                  Request a contract quote
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </Link>
+              <a href="tel:+2348033036016">
+                <Button variant="outlineOnDark" size="lg" className="w-full gap-2 sm:w-auto">
+                  <Phone className="h-4 w-4" aria-hidden="true" />
+                  Call us directly
+                </Button>
+              </a>
+            </div>
+          </div>
+
+          <Reveal delay={140} className="lg:self-center">
+            <ul className="overflow-hidden rounded-lg border border-white/15">
+              {contractPoints.map((point) => (
+                <li
+                  key={point}
+                  className="flex items-center gap-3.5 border-b border-white/10 px-6 py-4 last:border-b-0"
+                >
+                  <Check className="h-4 w-4 flex-none text-brand-green" aria-hidden="true" />
+                  <span className="text-[0.9375rem] text-white/80">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  </>
+);
 
 export default Clients;

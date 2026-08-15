@@ -1,113 +1,126 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ServicePlans from "@/components/ServicePlans";
+import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import {
   Home, HardHat, TreePine, Building2, Sofa, Zap,
-  CheckCircle, ArrowRight, Phone, Shield, Leaf, Clock, BadgeDollarSign,
+  Check, ArrowRight, Phone, Shield, Leaf, Clock, BadgeDollarSign,
 } from "lucide-react";
 
 const services = [
   {
     id: "house-clearance",
-    icon: <Home className="w-8 h-8" />,
-    title: "House Clearance",
-    description: "Whether you're moving home, renovating, or managing a property, our house clearance service removes all unwanted items quickly and responsibly. We handle everything from single rooms to full property clear-outs — saving you time, effort, and trips to the dump.",
+    icon: Home,
+    title: "House clearance",
+    audience: "For homeowners, landlords and estate agents",
+    description:
+      "Moving, renovating or turning a property around between tenants. We take everything unwanted out of the building, in one visit where we can, and leave the rooms swept.",
     wasteTypes: [
       "Old furniture and mattresses",
       "Kitchen appliances and white goods",
-      "Clothing, textiles, and personal items",
-      "General household clutter and rubbish",
-      "Carpets, curtains, and soft furnishings",
+      "Clothing, textiles and personal items",
+      "General household clutter",
+      "Carpets, curtains and soft furnishings",
     ],
     benefits: [
-      "Full or partial property clearance available",
-      "Items recycled or donated wherever possible",
-      "Ideal for landlords, estate agents, and homeowners",
-      "Clean-up included — we leave rooms swept and tidy",
+      "Full or partial clearance, your call",
+      "Items donated or recycled wherever possible",
+      "Rooms left swept, not just emptied",
+      "Often finished inside a single day",
     ],
   },
   {
     id: "construction-waste",
-    icon: <HardHat className="w-8 h-8" />,
-    title: "Construction Waste Removal",
-    description: "Building sites generate large volumes of waste that require specialist handling. Waste Masters provides fast, compliant removal of construction and renovation debris — keeping your site safe, tidy, and on schedule.",
+    icon: HardHat,
+    title: "Construction waste removal",
+    audience: "For builders, contractors and developers",
+    description:
+      "Building sites make waste faster than most skips can take it. We clear rubble and debris on a schedule that keeps the site safe, tidy and moving.",
     wasteTypes: [
-      "Rubble, bricks, and concrete",
-      "Timber, plasterboard, and drywall",
+      "Rubble, bricks and concrete",
+      "Timber, plasterboard and drywall",
       "Metal offcuts and scaffolding waste",
       "Packaging materials and pallets",
       "Renovation and demolition debris",
     ],
     benefits: [
       "Same-day and scheduled site collections",
-      "Compliant with environmental disposal regulations",
-      "Suitable for builders, contractors, and developers",
-      "Reduces risk of site hazards and delays",
+      "Compliant with disposal regulations",
+      "Cuts the risk of site hazards and delays",
+      "Waste transfer notes issued every visit",
     ],
   },
   {
     id: "garden-waste",
-    icon: <TreePine className="w-8 h-8" />,
-    title: "Garden Waste Removal",
-    description: "From routine garden maintenance to major landscaping projects, we collect and dispose of all types of green waste. Our service is perfect for homeowners, landscapers, and property managers who need quick, eco-friendly garden clearance.",
+    icon: TreePine,
+    title: "Garden waste removal",
+    audience: "For homeowners, landscapers and property managers",
+    description:
+      "Seasonal tidy-ups, storm damage and full landscaping projects. Green waste is composted wherever it can be, so very little of it reaches a landfill.",
     wasteTypes: [
       "Grass cuttings and hedge trimmings",
-      "Branches, logs, and tree stumps",
-      "Soil, turf, and compost",
+      "Branches, logs and tree stumps",
+      "Soil, turf and compost",
       "Leaves and general garden debris",
-      "Fencing, decking, and garden furniture",
+      "Fencing, decking and garden furniture",
     ],
     benefits: [
       "Green waste composted wherever possible",
-      "Ideal after seasonal clean-ups or storm damage",
+      "Good for storm clean-ups and seasonal work",
       "No volume too large or too small",
-      "Fast collection to keep your garden project moving",
+      "Fast collection keeps the project moving",
     ],
   },
   {
     id: "commercial-waste",
-    icon: <Building2 className="w-8 h-8" />,
-    title: "Office & Commercial Waste",
-    description: "Businesses need reliable waste management that doesn't disrupt operations. We provide tailored commercial waste collection for offices, shops, restaurants, hotels, and industrial spaces — on a schedule that works for you.",
+    icon: Building2,
+    title: "Office and commercial waste",
+    audience: "For offices, shops, restaurants and hotels",
+    description:
+      "Collection timed around your trading hours, with the documentation your compliance and sustainability reporting needs.",
     wasteTypes: [
       "Office furniture and equipment",
-      "Paper, cardboard, and packaging",
+      "Paper, cardboard and packaging",
       "Kitchen and food service waste",
-      "IT equipment and e-waste (certified disposal)",
+      "IT equipment and e-waste, certified disposal",
       "General commercial rubbish",
     ],
     benefits: [
-      "Flexible daily, weekly, or one-off collections",
-      "Discreet service that won't disrupt your business",
+      "Daily, weekly or one-off collections",
+      "Discreet crews who work around your customers",
       "Duty of care documentation provided",
-      "Recycling reports available for sustainability goals",
+      "Recycling reports for sustainability targets",
     ],
   },
   {
     id: "furniture-disposal",
-    icon: <Sofa className="w-8 h-8" />,
-    title: "Furniture Disposal",
-    description: "Getting rid of old or broken furniture can be a hassle. We collect sofas, beds, wardrobes, desks, and more from your doorstep — recycling or donating items in good condition and responsibly disposing of the rest.",
+    icon: Sofa,
+    title: "Furniture disposal",
+    audience: "For households and offices",
+    description:
+      "One sofa or a whole floor of desks. We carry it out, and anything still usable goes to a charity rather than a tip.",
     wasteTypes: [
-      "Sofas, armchairs, and recliners",
-      "Beds, mattresses, and bed frames",
-      "Wardrobes, drawers, and shelving",
-      "Desks, tables, and office chairs",
+      "Sofas, armchairs and recliners",
+      "Beds, mattresses and bed frames",
+      "Wardrobes, drawers and shelving",
+      "Desks, tables and office chairs",
       "Outdoor furniture and gym equipment",
     ],
     benefits: [
-      "No need to disassemble — we handle everything",
-      "Items donated to charities when possible",
+      "No need to dismantle anything first",
+      "Usable items donated to charities",
       "Single items or full loads accepted",
-      "Perfect for home moves and office refits",
+      "Suits home moves and office refits",
     ],
   },
   {
     id: "same-day",
-    icon: <Zap className="w-8 h-8" />,
-    title: "Same-Day Waste Collection",
-    description: "When waste can't wait, Waste Masters delivers. Our same-day collection service is designed for urgent situations — whether it's an unexpected clear-out, a last-minute project deadline, or waste that needs immediate removal.",
+    icon: Zap,
+    title: "Same-day collection",
+    audience: "For anything that cannot wait until tomorrow",
+    description:
+      "Book before midday and the load is gone the same working day, with no shortcuts taken on how it is disposed of.",
     wasteTypes: [
       "Any household or commercial waste",
       "Construction and renovation debris",
@@ -117,183 +130,184 @@ const services = [
     ],
     benefits: [
       "Book before midday for same-day service",
-      "Available across Abuja, Lagos, and Port Harcourt",
-      "No compromise on eco-friendly disposal standards",
-      "Ideal for emergencies and tight deadlines",
+      "Available in Abuja, Lagos and Port Harcourt",
+      "Same disposal standards as any other job",
+      "Built for deadlines and emergencies",
     ],
   },
 ];
 
-const ServicesPage = () => {
-  return (
-    <>
-      {/* Hero */}
-      <section className="bg-gradient-eco text-primary-foreground py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm uppercase tracking-wider opacity-80 font-semibold mb-3">What We Offer</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Our Waste Removal Services</h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            Professional, licensed waste collection and disposal for homes, businesses, and construction sites across Nigeria.
-          </p>
-        </div>
-      </section>
+const trustPoints = [
+  { icon: Shield, title: "Licensed carrier", desc: "Fully compliant" },
+  { icon: Clock, title: "Same-day service", desc: "Book by midday" },
+  { icon: BadgeDollarSign, title: "Fixed pricing", desc: "No fees added later" },
+  { icon: Leaf, title: "90% recycled", desc: "Diverted from landfill" },
+];
 
-      {/* Quick Nav */}
-      <section className="py-6 bg-muted/40 border-b border-border sticky top-16 md:top-20 z-30 backdrop-blur-md">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2">
-            {services.map((s) => (
-              <a key={s.id} href={`#${s.id}`}>
-                <Button variant="ghost" size="sm" className="gap-1.5 text-xs sm:text-sm">
-                  {s.icon && <span className="[&>svg]:w-4 [&>svg]:h-4">{s.icon}</span>}
-                  {s.title}
-                </Button>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+const ServicesPage = () => (
+  <>
+    <PageHeader
+      eyebrow="What we offer"
+      title="Waste removal services"
+      lead="Licensed collection and disposal for homes, businesses and construction sites across Nigeria."
+      rail={[
+        { label: "Services", value: "Six core services" },
+        { label: "Same-day cutoff", value: "Book before midday" },
+        { label: "Coverage", value: "Abuja · Lagos · Port Harcourt" },
+        { label: "Documentation", value: "Waste transfer note issued" },
+      ]}
+    />
 
-      {/* Detailed Services */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-5xl space-y-20">
-          {services.map((service, index) => (
-            <div
+    {/* Quick nav */}
+    <nav
+      className="sticky top-16 z-30 border-b border-border bg-background/90 backdrop-blur-md md:top-20"
+      aria-label="Jump to a service"
+    >
+      <div className="container mx-auto flex gap-1 overflow-x-auto py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {services.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className="whitespace-nowrap rounded-md px-3.5 py-2 text-[0.8125rem] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-brand-navy"
+          >
+            {s.title}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    {/* Detailed services */}
+    <div className="py-section">
+      <div className="container mx-auto space-y-20 lg:space-y-28">
+        {services.map((service, index) => {
+          const Icon = service.icon;
+          return (
+            <section
               key={service.id}
               id={service.id}
-              className="scroll-mt-36"
+              className="scroll-mt-32 md:scroll-mt-36"
+              aria-labelledby={`${service.id}-heading`}
             >
-              <div className={`grid md:grid-cols-2 gap-10 items-start ${index % 2 !== 0 ? "md:direction-rtl" : ""}`}>
-                {/* Info */}
-                <div className={index % 2 !== 0 ? "md:order-2" : ""}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-eco text-primary-foreground flex items-center justify-center flex-shrink-0">
-                      {service.icon}
-                    </div>
-                    <div>
-                      <p className="text-primary font-semibold text-xs uppercase tracking-wider">Service {String(index + 1).padStart(2, "0")}</p>
-                      <h2 className="text-2xl md:text-3xl font-bold text-foreground">{service.title}</h2>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
-                  <Link to="/contact">
-                    <Button variant="default" className="gap-2">
-                      Request a Quote <ArrowRight className="w-4 h-4" />
+              <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+                <Reveal
+                  animation={index % 2 === 0 ? "fade-in-left" : "fade-in"}
+                  className="lg:sticky lg:top-36 lg:self-start"
+                >
+                  <span className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-brand-green-wash text-brand-green-ink">
+                    <Icon className="h-[1.375rem] w-[1.375rem]" aria-hidden="true" />
+                  </span>
+                  <p className="eyebrow mb-3">{service.audience}</p>
+                  <h2 id={`${service.id}-heading`}>{service.title}</h2>
+                  <p className="mt-5 leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+                  {/* Outline here so the green stays meaningful at the page's
+                      single closing call to action. */}
+                  <Link to="/contact" className="mt-7 inline-block">
+                    <Button variant="outline" className="gap-2">
+                      Request a quote
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Button>
                   </Link>
-                </div>
+                </Reveal>
 
-                {/* Details Cards */}
-                <div className={`space-y-4 ${index % 2 !== 0 ? "md:order-1" : ""}`}>
-                  {/* Waste Types */}
-                  <Card className="shadow-card">
-                    <CardContent className="p-5">
-                      <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-primary" />
-                        Types of Waste Accepted
-                      </h4>
-                      <ul className="space-y-2">
-                        {service.wasteTypes.map((type, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                            {type}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                <Reveal delay={120} className="grid gap-5 sm:grid-cols-2">
+                  <div className="rounded-lg border border-border bg-background p-6 shadow-card">
+                    <h3 className="mb-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                      Waste we accept
+                    </h3>
+                    <ul className="space-y-2.5">
+                      {service.wasteTypes.map((type) => (
+                        <li
+                          key={type}
+                          className="flex items-start gap-2.5 text-[0.9375rem] text-foreground/85"
+                        >
+                          <Check className="mt-1 h-3.5 w-3.5 flex-none text-primary" aria-hidden="true" />
+                          {type}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  {/* Benefits */}
-                  <Card className="shadow-card border-primary/10 bg-primary/[0.02]">
-                    <CardContent className="p-5">
-                      <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
-                        <Leaf className="w-4 h-4 text-primary" />
-                        Why Choose Waste Masters
-                      </h4>
-                      <ul className="space-y-2">
-                        {service.benefits.map((b, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <CheckCircle className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
+                  <div className="rounded-lg border border-border bg-secondary/60 p-6">
+                    <h3 className="mb-4 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                      What you get
+                    </h3>
+                    <ul className="space-y-2.5">
+                      {service.benefits.map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-start gap-2.5 text-[0.9375rem] text-foreground/85"
+                        >
+                          <Check className="mt-1 h-3.5 w-3.5 flex-none text-brand-blue-ink" aria-hidden="true" />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
               </div>
+            </section>
+          );
+        })}
+      </div>
+    </div>
 
-              {/* Divider */}
-              {index < services.length - 1 && (
-                <div className="border-t border-border mt-16" />
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+    {/* Trust bar */}
+    <section className="border-y border-border bg-secondary/50 py-14" aria-label="Service standards">
+      <div className="container mx-auto grid grid-cols-2 gap-8 md:grid-cols-4">
+        {trustPoints.map((t, i) => {
+          const Icon = t.icon;
+          return (
+            <Reveal key={t.title} delay={i * 80} className="flex items-center gap-4">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-md bg-background text-brand-navy shadow-card">
+                <Icon className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <span>
+                <span className="block text-[0.9375rem] font-semibold text-foreground">
+                  {t.title}
+                </span>
+                <span className="block text-[0.8125rem] text-muted-foreground">
+                  {t.desc}
+                </span>
+              </span>
+            </Reveal>
+          );
+        })}
+      </div>
+    </section>
 
-      {/* Trust Bar */}
-      <section className="py-12 bg-muted/40">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
-            <div>
-              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center">
-                <Shield className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-semibold text-foreground">Licensed Carrier</p>
-              <p className="text-xs text-muted-foreground">Fully compliant</p>
-            </div>
-            <div>
-              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center">
-                <Clock className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-semibold text-foreground">Same-Day Service</p>
-              <p className="text-xs text-muted-foreground">Book by midday</p>
-            </div>
-            <div>
-              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center">
-                <BadgeDollarSign className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-semibold text-foreground">Fair Pricing</p>
-              <p className="text-xs text-muted-foreground">No hidden fees</p>
-            </div>
-            <div>
-              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center">
-                <Leaf className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-semibold text-foreground">90% Recycled</p>
-              <p className="text-xs text-muted-foreground">Eco-friendly disposal</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <ServicePlans />
 
-      {/* Plans */}
-      <ServicePlans />
-
-      {/* Final CTA */}
-      <section className="py-20 bg-foreground text-background text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Need Waste Removed?</h2>
-          <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-            Get a free, no-obligation quote for any of our waste removal services. Fast response, competitive pricing, eco-friendly disposal.
+    {/* Final CTA */}
+    <section className="on-navy bg-gradient-navy py-section" aria-labelledby="services-cta">
+      <div className="container mx-auto max-w-3xl text-center">
+        <Reveal>
+          <h2 id="services-cta" className="text-white">
+            Tell us what needs to go
+          </h2>
+          <p className="lead mx-auto mt-5 max-w-xl text-white/70">
+            Send a photo and a location. You will have a fixed price inside two
+            hours, with no obligation to book.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <Link to="/contact">
-              <Button size="lg" className="text-lg px-8 py-6 gap-2 bg-primary text-primary-foreground hover:bg-primary-dark">
-                Get a Free Quote <ArrowRight className="w-5 h-5" />
+              <Button size="xl" className="w-full gap-2 sm:w-auto">
+                Get a free quote
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Button>
             </Link>
             <a href="tel:+2348033036016">
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 gap-2 border-background/30 text-background hover:bg-background hover:text-foreground">
-                <Phone className="w-5 h-5" /> Call Now
+              <Button variant="outlineOnDark" size="xl" className="w-full gap-2 sm:w-auto">
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Call 0803 303 6016
               </Button>
             </a>
           </div>
-        </div>
-      </section>
-    </>
-  );
-};
+        </Reveal>
+      </div>
+    </section>
+  </>
+);
 
 export default ServicesPage;

@@ -1,49 +1,83 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 import {
   Home, HardHat, TreePine, Building2, Sofa, Zap,
   Shield, Clock, BadgeDollarSign, Leaf, Users,
-  ArrowRight, Phone, Star,
+  ArrowRight, ArrowUpRight, Phone, Star, MapPin,
 } from "lucide-react";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
+import VideoEmbed from "@/components/VideoEmbed";
 
-import galleryConstruction1 from "@/assets/gallery-construction-1.jpg";
-import galleryCommercial1 from "@/assets/gallery-commercial-1.jpg";
-import truck0085 from "@/assets/truck-0085.jpg.asset.json";
-import truck0089 from "@/assets/truck-0089.jpg.asset.json";
+import fleet0086 from "@/assets/fleet-0086.jpg";
+import fleet0089 from "@/assets/fleet-0089.jpg";
+import fleet0085 from "@/assets/fleet-0085.jpg";
+import fleet0087 from "@/assets/fleet-0087.jpg";
 
 /* ── Services ── */
 const services = [
-  { icon: <Home className="w-7 h-7" />, title: "House Clearance", desc: "Full property clearance for moves, renovations, or estate management." },
-  { icon: <HardHat className="w-7 h-7" />, title: "Construction Waste Removal", desc: "Safe removal of rubble, debris, and building materials from any project site." },
-  { icon: <TreePine className="w-7 h-7" />, title: "Garden Waste Removal", desc: "Green waste, branches, soil, and landscaping debris collected and disposed responsibly." },
-  { icon: <Building2 className="w-7 h-7" />, title: "Commercial Waste Disposal", desc: "Tailored waste solutions for offices, restaurants, hotels, and retail businesses." },
-  { icon: <Sofa className="w-7 h-7" />, title: "Furniture Disposal", desc: "Old sofas, beds, appliances — collected from your doorstep with care." },
-  { icon: <Zap className="w-7 h-7" />, title: "Same-Day Waste Collection", desc: "Urgent waste removal when you need it most. Book today, cleared today." },
+  { icon: Home, id: "house-clearance", title: "House clearance", desc: "Full property clear-outs for moves, renovations and estate management. Rooms left swept." },
+  { icon: HardHat, id: "construction-waste", title: "Construction waste", desc: "Rubble, timber, plasterboard and demolition debris cleared from live sites." },
+  { icon: TreePine, id: "garden-waste", title: "Garden waste", desc: "Branches, trimmings, soil and landscaping debris, composted wherever we can." },
+  { icon: Building2, id: "commercial-waste", title: "Commercial waste", desc: "Offices, restaurants, hotels and retail, on a schedule that fits your trading hours." },
+  { icon: Sofa, id: "furniture-disposal", title: "Furniture disposal", desc: "Sofas, beds and appliances taken from the doorstep. No need to dismantle anything." },
+  { icon: Zap, id: "same-day", title: "Same-day collection", desc: "Book before midday and the load is gone the same working day." },
 ];
 
-/* ── Why Choose Us ── */
+/* ── How it works: a real sequence, so the steps are numbered ── */
+const steps = [
+  {
+    n: "01",
+    title: "Tell us what needs to go",
+    desc: "Send a photo or a short description by phone, WhatsApp or the quote form. We price on volume, not on guesswork.",
+  },
+  {
+    n: "02",
+    title: "We confirm a slot",
+    desc: "You get a fixed price and a collection window, usually within two hours. Book before midday and we can often clear it the same day.",
+  },
+  {
+    n: "03",
+    title: "We clear it and document it",
+    desc: "Our crew loads, sweeps and leaves. You get your waste transfer note, and 90% of the load is diverted from landfill.",
+  },
+];
+
+/* ── Why us ── */
 const whyUs = [
-  { icon: <Shield className="w-7 h-7" />, title: "Licensed Waste Carrier", desc: "Fully licensed and compliant with Nigerian environmental regulations and standards." },
-  { icon: <Clock className="w-7 h-7" />, title: "Fast Response Times", desc: "Same-day and next-day waste collection across Abuja, Lagos, and Port Harcourt." },
-  { icon: <BadgeDollarSign className="w-7 h-7" />, title: "Competitive Pricing", desc: "Transparent, affordable pricing with no hidden fees. Free quotes available." },
-  { icon: <Leaf className="w-7 h-7" />, title: "Eco-Friendly Disposal", desc: "We recycle up to 90% of waste collected, minimising landfill impact." },
-  { icon: <Users className="w-7 h-7" />, title: "Trusted by Local Businesses", desc: "Hundreds of businesses and thousands of households rely on our service daily." },
+  { icon: Shield, title: "Licensed waste carrier", desc: "Fully licensed under Nigerian environmental law, with duty of care documentation on every job." },
+  { icon: Clock, title: "Fast response", desc: "Same-day and next-day collection across Abuja, Lagos and Port Harcourt." },
+  { icon: BadgeDollarSign, title: "Priced up front", desc: "Transparent volume-based pricing. Free quotes, and no fees that appear later." },
+  { icon: Leaf, title: "90% diverted from landfill", desc: "Sorted, recycled and composted through certified processing partners." },
+  { icon: Users, title: "Trusted by local business", desc: "Estates, contractors and retailers rely on our crews six days a week." },
 ];
 
-/* ── Gallery ── */
-const galleryImages = [
-  { src: truck0085.url, alt: "Waste Masters DAF CF compactor truck ready for collection" },
-  { src: galleryConstruction1, alt: "Construction site waste removal in progress" },
-  { src: truck0089.url, alt: "Side view of a Waste Masters refuse compactor truck" },
-  { src: galleryCommercial1, alt: "Commercial office waste clearance" },
+/* ── The fleet. Photographs of the actual trucks, on site. ── */
+const fleetImages = [
+  {
+    src: fleet0086,
+    alt: "A Waste Masters DAF CF rear-loader compactor truck parked on site in Lagos",
+    label: "DAF CF rear loader · Lagos",
+  },
+  {
+    src: fleet0089,
+    alt: "Full side profile of a Waste Masters rear-loading compactor truck",
+    label: "Side profile · rear-loading compactor",
+  },
+  {
+    src: fleet0087,
+    alt: "The Lean and Green certified rear-loading compaction unit",
+    label: "Lean and Green certified unit",
+  },
+  {
+    src: fleet0085,
+    alt: "A Waste Masters compactor truck ready for the morning round",
+    label: "Ready for the morning round",
+  },
 ];
 
-/* ── Client Logos ── */
 const clientNames = [
   "TechVille Estates",
   "GreenBuild Construction",
@@ -55,46 +89,55 @@ const clientNames = [
 
 const Index = () => {
   return (
-    <div>
-      {/* ═══ HERO ═══ */}
+    <>
       <Hero />
 
-      {/* ═══ SERVICES OVERVIEW ═══ */}
-      <section className="py-20 bg-background" id="services" aria-labelledby="services-heading">
-        <div className="container mx-auto px-4">
-          <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">What We Do</p>
-              <h2 id="services-heading" className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-                Our Waste Removal Services
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                From single-item pickups to full-scale site clearances — we have you covered.
-              </p>
-            </div>
-          </Reveal>
+      {/* ═══ SERVICES ═══ */}
+      <section className="py-section" id="services" aria-labelledby="services-heading">
+        <div className="container mx-auto">
+          <SectionHeading
+            id="services-heading"
+            align="left"
+            eyebrow="What we take"
+            title="Six ways we clear a site"
+            lead="From a single sofa to fifteen tonnes of rubble, on a one-off booking or a standing contract."
+            className="mb-14"
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {services.map((s, i) => (
-              <Reveal key={i} animation="scale-in" delay={i * 100}>
-                <Card className="h-full group shadow-card hover:shadow-eco border-transparent hover:border-primary/20 transition-all duration-300">
-                  <CardContent className="p-6">
-                    <div className="w-14 h-14 mb-4 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-gradient-eco group-hover:text-primary-foreground transition-all duration-300" aria-hidden="true">
-                      {s.icon}
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                  </CardContent>
-                </Card>
-              </Reveal>
-            ))}
+          <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <Reveal key={s.id} delay={i * 70}>
+                  <Link
+                    to={`/services#${s.id}`}
+                    className="group flex h-full flex-col bg-background p-7 transition-colors duration-300 hover:bg-secondary/60 lg:p-8"
+                  >
+                    <span className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-brand-green-wash text-brand-green-ink transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                      <Icon className="h-[1.375rem] w-[1.375rem]" aria-hidden="true" />
+                    </span>
+                    <h3 className="mb-2.5 flex items-start justify-between gap-3">
+                      {s.title}
+                      <ArrowUpRight
+                        className="mt-1 h-4 w-4 flex-none text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                        aria-hidden="true"
+                      />
+                    </h3>
+                    <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                      {s.desc}
+                    </p>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
 
-          <Reveal delay={600}>
-            <div className="text-center mt-12">
+          <Reveal delay={420}>
+            <div className="mt-10">
               <Link to="/services">
-                <Button variant="outline" size="lg" className="gap-2 hover-scale">
-                  View All Services <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                <Button variant="outline" size="lg" className="gap-2">
+                  See what each service covers
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
@@ -102,179 +145,257 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══ WHY CHOOSE US ═══ */}
-      <section className="py-20 bg-muted/40" aria-labelledby="why-heading">
-        <div className="container mx-auto px-4">
-          <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Why Us</p>
-              <h2 id="why-heading" className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-                Why Choose Waste Masters?
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Professional, reliable, and environmentally responsible — here's what sets us apart.
-              </p>
-            </div>
-          </Reveal>
+      {/* ═══ HOW IT WORKS ═══ */}
+      <section className="border-y border-border bg-secondary/50 py-section" aria-labelledby="how-heading">
+        <div className="container mx-auto">
+          <SectionHeading
+            id="how-heading"
+            align="left"
+            eyebrow="How a booking runs"
+            title="Three steps, one working day"
+            className="mb-14"
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
-            {whyUs.map((item, i) => (
-              <Reveal key={i} animation="fade-in" delay={i * 120}>
-                <div className="text-center group">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-eco text-primary-foreground flex items-center justify-center shadow-eco group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-base font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+          <ol className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-3">
+            {steps.map((step, i) => (
+              <Reveal key={step.n} as="li" delay={i * 110} className="bg-background">
+                <div className="h-full p-7 lg:p-9">
+                  <span className="font-mono text-[0.6875rem] font-medium tracking-[0.2em] text-primary">
+                    {step.n}
+                  </span>
+                  <h3 className="mb-3 mt-5">{step.title}</h3>
+                  <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {step.desc}
+                  </p>
                 </div>
               </Reveal>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ═══ PRESS: CREEK ROAD MARKET ═══ */}
+      <section className="on-navy relative overflow-hidden bg-gradient-navy py-section" aria-labelledby="press-heading">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-40 top-1/3 h-[34rem] w-[34rem] rounded-full opacity-20 blur-3xl"
+          style={{ background: "radial-gradient(circle, hsl(var(--blue)) 0%, transparent 66%)" }}
+        />
+        <div className="container relative mx-auto">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+            <div>
+              <p className="eyebrow eyebrow-on-navy eyebrow-rule mb-6">In the field</p>
+              <h2 id="press-heading" className="text-white">
+                Creek Road Market, back under control
+              </h2>
+              <p className="lead mt-5 text-white/70">
+                Our Managing Director speaks to the press from Creek Road Market
+                in Port Harcourt, one of the zones where refuse collection now
+                runs to schedule.
+              </p>
+
+              <dl className="mt-9 space-y-px overflow-hidden rounded-md border border-white/15">
+                {[
+                  { k: "Zone", v: "Creek Road Market" },
+                  { k: "City", v: "Port Harcourt, Rivers State" },
+                  { k: "Status", v: "Collection running to schedule" },
+                ].map((row) => (
+                  <div
+                    key={row.k}
+                    className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-white/10 px-5 py-3.5 last:border-b-0"
+                  >
+                    <dt className="w-24 flex-none font-mono text-[0.625rem] font-medium uppercase tracking-[0.16em] text-white/45">
+                      {row.k}
+                    </dt>
+                    <dd className="font-display text-[0.9375rem] font-semibold text-white">
+                      {row.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <Reveal animation="scale-in">
+              <VideoEmbed
+                id="8J-8-qzTf6w"
+                title="The Managing Director being interviewed by the press about refuse collection at Creek Road Market, Port Harcourt"
+                kicker="Press interview · Creek Road Market, Port Harcourt"
+              />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ═══ GALLERY PREVIEW ═══ */}
-      <section className="py-20 bg-background" aria-labelledby="gallery-heading">
-        <div className="container mx-auto px-4">
-          <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Our Work</p>
-              <h2 id="gallery-heading" className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-                Recent Waste Removal Jobs
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                See our team in action across Nigeria — delivering clean spaces every day.
-              </p>
+      {/* ═══ WHY US ═══ */}
+      <section className="py-section" aria-labelledby="why-heading">
+        <div className="container mx-auto">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <SectionHeading
+                id="why-heading"
+                align="left"
+                eyebrow="Why us"
+                title="The part most carriers skip"
+                lead="Anyone can move a load. Getting it documented, priced honestly and kept out of landfill is the harder half."
+              />
+              <Reveal delay={160}>
+                <Link to="/contact" className="mt-8 inline-block">
+                  <Button size="lg" className="gap-2">
+                    Get a free quote
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Button>
+                </Link>
+              </Reveal>
             </div>
-          </Reveal>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-            {galleryImages.map((img, i) => (
-              <Reveal key={i} animation="scale-in" delay={i * 100}>
-                <div className="group relative rounded-xl overflow-hidden shadow-card hover:shadow-eco transition-all duration-300 aspect-[4/3]">
+            <ul className="border-t border-border">
+              {whyUs.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <Reveal
+                    key={item.title}
+                    as="li"
+                    delay={i * 80}
+                    className="group flex gap-5 border-b border-border py-6 sm:gap-7"
+                  >
+                      <span className="mt-0.5 flex h-11 w-11 flex-none items-center justify-center rounded-md bg-secondary text-brand-navy transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <div>
+                        <h3 className="mb-1.5">{item.title}</h3>
+                        <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                          {item.desc}
+                        </p>
+                      </div>
+                  </Reveal>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ THE FLEET ═══ */}
+      <section className="border-t border-border bg-secondary/50 py-section" aria-labelledby="fleet-heading">
+        <div className="container mx-auto">
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              id="fleet-heading"
+              align="left"
+              eyebrow="The fleet"
+              title="The trucks that turn up"
+              lead="DAF CF rear-loading compactors, Lean and Green certified, working six days a week across three cities."
+              className="mb-0"
+            />
+            <Reveal delay={120}>
+              <Link to="/gallery">
+                <Button variant="outline" className="gap-2">
+                  View the full gallery
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {fleetImages.map((img, i) => (
+              <Reveal key={img.alt} animation="scale-in" delay={i * 90}>
+                <figure className="group relative aspect-[4/3] overflow-hidden rounded-lg photo-edge">
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
-                    width={400}
-                    height={300}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <p className="text-background text-sm font-medium">{img.alt}</p>
-                  </div>
-                </div>
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/80 via-transparent to-transparent"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-2.5 p-5">
+                    <span className="h-1.5 w-1.5 flex-none rounded-full bg-brand-green" />
+                    <span className="font-mono text-[0.625rem] font-medium uppercase leading-tight tracking-[0.14em] text-white/85">
+                      {img.label}
+                    </span>
+                  </figcaption>
+                </figure>
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={400}>
-            <div className="text-center mt-10">
-              <Link to="/gallery">
-                <Button variant="outline" size="lg" className="gap-2 hover-scale">
-                  View Full Gallery <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Button>
-              </Link>
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* ═══ CLIENT LOGOS ═══ */}
-      <section className="py-16 bg-muted/30 border-y border-border" aria-label="Trusted clients">
-        <div className="container mx-auto px-4">
+      {/* ═══ CLIENTS ═══ */}
+      <section className="border-y border-border py-16" aria-label="Clients">
+        <div className="container mx-auto">
           <Reveal>
-            <p className="text-center text-sm text-muted-foreground uppercase tracking-wider font-semibold mb-10">
-              Trusted by businesses &amp; communities across Nigeria
+            <p className="mb-9 text-center font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+              Trusted by businesses and communities across Nigeria
             </p>
           </Reveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-14">
             {clientNames.map((name, i) => (
-              <Reveal key={i} animation="scale-in" delay={i * 80}>
-                <div className="flex items-center justify-center h-16 rounded-lg bg-background border border-border shadow-sm px-4 hover:shadow-card transition-shadow duration-200">
-                  <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap">{name}</span>
-                </div>
+              <Reveal key={name} delay={i * 60}>
+                <span className="font-display text-[0.9375rem] font-semibold tracking-tight text-muted-foreground transition-colors duration-300 hover:text-brand-navy">
+                  {name}
+                </span>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ TESTIMONIALS ═══ */}
       <Testimonials />
 
-      {/* ═══ NEWSLETTER SIGNUP ═══ */}
-      <section className="py-20 bg-muted/40" aria-labelledby="newsletter-heading">
-        <div className="container mx-auto px-4">
-          <Reveal animation="scale-in">
-            <Card className="max-w-3xl mx-auto shadow-professional overflow-hidden">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-2">
-                  <div className="bg-gradient-eco text-primary-foreground p-8 md:p-10 flex flex-col justify-center">
-                    <Leaf className="w-10 h-10 mb-4 opacity-80" aria-hidden="true" />
-                    <h3 id="newsletter-heading" className="text-2xl font-bold mb-2">Stay Eco-Informed</h3>
-                    <p className="opacity-90 text-sm leading-relaxed">
-                      Subscribe for waste disposal tips, recycling guides, and service updates delivered to your inbox.
-                    </p>
-                  </div>
-                  <div className="p-8 md:p-10 flex flex-col justify-center">
-                    <form className="space-y-3" onSubmit={(e) => e.preventDefault()} aria-label="Newsletter signup">
-                      <Input placeholder="Your name" aria-label="Your name" />
-                      <Input type="email" placeholder="Your email address" aria-label="Email address" />
-                      <Button variant="default" className="w-full">
-                        Subscribe Now
-                      </Button>
-                    </form>
-                    <p className="text-xs text-muted-foreground mt-3">
-                      No spam, ever. Unsubscribe anytime.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ═══ FINAL CTA ═══ */}
-      <section className="py-20 bg-foreground text-background" aria-labelledby="cta-heading">
-        <div className="container mx-auto px-4 text-center">
-          <Reveal>
-            <div className="max-w-3xl mx-auto">
-              <h2 id="cta-heading" className="text-3xl md:text-5xl font-bold mb-4">
-                Need Waste Gone Today?
-              </h2>
-              <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-                Contact Waste Masters for fast, reliable, and eco-friendly waste removal anywhere in Nigeria.
+      <section className="on-navy relative overflow-hidden bg-gradient-navy py-section" aria-labelledby="cta-heading">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full opacity-25 blur-3xl"
+          style={{ background: "radial-gradient(circle, hsl(var(--green)) 0%, transparent 68%)" }}
+        />
+        <div className="container relative mx-auto">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <p className="eyebrow eyebrow-on-navy eyebrow-rule mb-6 justify-center">
+                Book a collection
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <h2 id="cta-heading" className="text-white">
+                Need it gone today?
+              </h2>
+              <p className="lead mx-auto mt-5 max-w-xl text-white/70">
+                Send a photo and a postcode. We will come back with a fixed price
+                inside two hours, and a collection window that suits you.
+              </p>
+              <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
                 <Link to="/contact">
-                  <Button
-                    size="lg"
-                    className="text-lg px-8 py-6 gap-2 bg-primary text-primary-foreground hover:bg-primary-dark hover-scale"
-                  >
-                    Get a Free Quote <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                  <Button size="xl" className="w-full gap-2 sm:w-auto">
+                    Get a free quote
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
                   </Button>
                 </Link>
-                <a href="tel:+2348033036016" aria-label="Call Waste Masters now">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="text-lg px-8 py-6 gap-2 border-background/30 text-background hover:bg-background hover:text-foreground hover-scale"
-                  >
-                    <Phone className="w-5 h-5" aria-hidden="true" /> Call Now
+                <a href="tel:+2348033036016">
+                  <Button variant="outlineOnDark" size="xl" className="w-full gap-2 sm:w-auto">
+                    <Phone className="h-5 w-5" aria-hidden="true" />
+                    Call 0803 303 6016
                   </Button>
                 </a>
               </div>
-              <div className="flex items-center justify-center gap-2 mt-8 text-sm opacity-60">
-                <Star className="w-4 h-4 fill-current" aria-hidden="true" />
-                <span>Rated 4.9/5 by 500+ customers across Nigeria</span>
+
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm text-white/60">
+                <span className="flex items-center gap-2">
+                  <Star className="h-4 w-4 fill-brand-green text-brand-green" aria-hidden="true" />
+                  4.9 out of 5 from 500+ customers
+                </span>
+                <span className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-brand-green" aria-hidden="true" />
+                  Abuja, Lagos and Port Harcourt
+                </span>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -1,330 +1,342 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
 import {
   Leaf, Recycle, Lightbulb, BookOpen, Calendar, HardHat, Home,
-  Ban, Newspaper, ArrowRight, CheckCircle, Mail, Bell, Trophy,
-  Scale, Megaphone,
+  Ban, ArrowRight, Check, Trophy, Megaphone,
 } from "lucide-react";
+import PageHeader from "@/components/PageHeader";
+import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
-/* ── Featured Articles ── */
 const featuredArticles = [
   {
-    icon: <HardHat className="w-6 h-6" />,
-    title: "How to Dispose of Construction Waste Responsibly",
-    category: "Recycling Advice",
+    icon: HardHat,
+    title: "How to dispose of construction waste responsibly",
+    category: "Recycling advice",
     date: "March 2026",
-    content: "Construction waste — rubble, timber, plasterboard, metals — requires careful handling. Never mix hazardous materials like asbestos with general waste. Separate recyclable metals and timber from inert rubble. Always use a licensed waste carrier for compliant disposal, and request waste transfer notes for your records. At Waste Masters, we divert over 85% of construction waste from landfill through certified recycling partners.",
     readTime: "4 min read",
+    content:
+      "Construction waste needs careful handling. Never mix hazardous materials such as asbestos with general waste. Separate recyclable metals and timber from inert rubble. Always use a licensed waste carrier, and keep your waste transfer notes. We divert over 85% of construction waste from landfill through certified recycling partners.",
   },
   {
-    icon: <Recycle className="w-6 h-6" />,
-    title: "The Importance of Recycling Household Waste",
-    category: "Waste Disposal Tips",
+    icon: Recycle,
+    title: "The case for recycling household waste",
+    category: "Disposal tips",
     date: "February 2026",
-    content: "Recycling reduces landfill pressure, conserves natural resources, and cuts greenhouse gas emissions. Start by separating plastics, paper, glass, and metals from general waste. Rinse containers before recycling. Composting food scraps and garden waste can reduce your household waste volume by up to 30%. Every bag sorted correctly is a step towards a cleaner Nigeria.",
     readTime: "3 min read",
+    content:
+      "Recycling reduces landfill pressure, conserves resources and cuts emissions. Start by separating plastics, paper, glass and metals from general waste, and rinse containers first. Composting food scraps and garden waste can cut household waste volume by up to 30%.",
   },
   {
-    icon: <Ban className="w-6 h-6" />,
-    title: "What Items Cannot Go Into Landfill",
+    icon: Ban,
+    title: "What cannot go into landfill",
     category: "Regulations",
     date: "January 2026",
-    content: "Certain items are banned from landfill or require specialist disposal: batteries, electronics (phones, laptops, TVs), paint and solvents, engine oil, tyres, asbestos, medical waste, and fluorescent bulbs. Disposing of these incorrectly can result in soil and water contamination, health risks, and regulatory penalties. Contact Waste Masters for advice on certified disposal channels.",
     readTime: "5 min read",
+    content:
+      "Some items are banned from landfill or need specialist disposal: batteries, electronics, paint and solvents, engine oil, tyres, asbestos, medical waste and fluorescent bulbs. Getting this wrong risks soil and water contamination, health hazards and penalties.",
   },
   {
-    icon: <Home className="w-6 h-6" />,
-    title: "Tips for Clearing a Property Efficiently",
-    category: "Waste Disposal Tips",
+    icon: Home,
+    title: "Clearing a property efficiently",
+    category: "Disposal tips",
     date: "December 2025",
-    content: "Planning a house clearance? Start room by room, sorting items into keep, donate, recycle, and dispose categories. Tackle bulky items like furniture and appliances first. Bag general waste tightly. For large clearances, book a professional service like Waste Masters — our team can clear an entire property in a single day, with all waste sorted and responsibly disposed.",
     readTime: "4 min read",
+    content:
+      "Work room by room, sorting into keep, donate, recycle and dispose. Tackle bulky items such as furniture and appliances first, and bag general waste tightly. For a large clearance, a professional crew can clear a whole property in a single day with everything sorted.",
   },
 ];
 
-/* ── Quick Tips ── */
 const quickTips = [
-  {
-    icon: <Recycle className="w-5 h-5" />,
-    title: "Separate Your Waste",
-    content: "Sort into recyclables, organic, and general waste before collection day for better recycling rates.",
-  },
-  {
-    icon: <Leaf className="w-5 h-5" />,
-    title: "Composting at Home",
-    content: "Food scraps and garden waste make nutrient-rich compost — reducing waste volume by up to 30%.",
-  },
-  {
-    icon: <Lightbulb className="w-5 h-5" />,
-    title: "Reduce Single-Use Plastics",
-    content: "Switch to reusable bags, bottles, and containers. Small changes add up to big environmental impact.",
-  },
-  {
-    icon: <BookOpen className="w-5 h-5" />,
-    title: "Know Your Local Regulations",
-    content: "Stay informed about waste disposal laws. Proper compliance protects communities and avoids penalties.",
-  },
-  {
-    icon: <Calendar className="w-5 h-5" />,
-    title: "Schedule Regular Clean-Ups",
-    content: "Monthly neighbourhood clean-ups create lasting change and build cleaner, healthier communities.",
-  },
-  {
-    icon: <Recycle className="w-5 h-5" />,
-    title: "E-Waste Needs Special Care",
-    content: "Never bin electronics. Phones, laptops, and batteries require certified e-waste disposal handlers.",
-  },
+  { icon: Recycle, title: "Separate your waste", content: "Sort into recyclables, organic and general before collection day. It lifts the recycling rate more than anything else you can do." },
+  { icon: Leaf, title: "Compost at home", content: "Food scraps and garden waste make good compost, and cut your waste volume by up to 30%." },
+  { icon: Lightbulb, title: "Cut single-use plastics", content: "Reusable bags, bottles and containers. Small changes, repeated daily, add up quickly." },
+  { icon: BookOpen, title: "Know the local rules", content: "Disposal law varies by state. Staying current protects your community and avoids penalties." },
+  { icon: Calendar, title: "Schedule clean-ups", content: "A monthly neighbourhood clean-up builds a habit that outlasts any one-off effort." },
+  { icon: Recycle, title: "E-waste needs care", content: "Never bin electronics. Phones, laptops and batteries need certified e-waste handlers." },
 ];
 
-/* ── Regulation Updates ── */
 const regulationUpdates = [
   {
-    title: "NESREA Updates Waste Handling Guidelines",
+    title: "NESREA updates waste handling guidelines",
     date: "March 2026",
-    summary: "The National Environmental Standards and Regulations Enforcement Agency has issued updated guidelines on commercial waste segregation and disposal documentation requirements.",
+    summary:
+      "The National Environmental Standards and Regulations Enforcement Agency has issued updated guidance on commercial waste segregation and disposal documentation.",
   },
   {
-    title: "Lagos State Strengthens Recycling Mandates",
+    title: "Lagos State strengthens recycling mandates",
     date: "January 2026",
-    summary: "New directives require commercial establishments in Lagos to demonstrate recycling compliance, with penalties for non-compliant disposal of recyclable materials.",
+    summary:
+      "New directives require commercial establishments in Lagos to demonstrate recycling compliance, with penalties for non-compliant disposal of recyclable materials.",
   },
   {
-    title: "Abuja Environmental Board E-Waste Policy",
+    title: "Abuja Environmental Board e-waste policy",
     date: "November 2025",
-    summary: "The AEPB has banned the disposal of electronic waste in regular collection streams, requiring certified e-waste handlers for all electronic items.",
+    summary:
+      "The AEPB has banned disposal of electronic waste in regular collection streams, requiring certified e-waste handlers for all electronic items.",
   },
 ];
 
-/* ── Company News ── */
 const companyNews = [
   {
-    icon: <Trophy className="w-5 h-5" />,
-    title: "Waste Masters Expands to Port Harcourt",
+    icon: Trophy,
+    title: "Waste Masters expands to Port Harcourt",
     date: "March 2026",
-    summary: "We're proud to announce the launch of our waste collection services in Port Harcourt, bringing our eco-friendly waste management to Rivers State.",
+    summary:
+      "We have launched collection services in Port Harcourt, bringing eco-friendly waste management to Rivers State.",
   },
   {
-    icon: <Megaphone className="w-5 h-5" />,
-    title: "Community Clean-Up: Gwarinpa, Abuja",
+    icon: Megaphone,
+    title: "Community clean-up in Gwarinpa, Abuja",
     date: "February 2026",
-    summary: "Our team partnered with the Gwarinpa Residents Association for a weekend clean-up event, collecting over 8 tonnes of waste from communal areas.",
+    summary:
+      "Our team partnered with the Gwarinpa Residents Association for a weekend clean-up, collecting over 8 tonnes from communal areas.",
   },
   {
-    icon: <Leaf className="w-5 h-5" />,
-    title: "90% Landfill Diversion Rate Achieved",
+    icon: Leaf,
+    title: "90% landfill diversion reached",
     date: "January 2026",
-    summary: "Waste Masters has hit a new milestone — 90% of all waste collected is now diverted from landfill through recycling and composting partnerships.",
+    summary:
+      "A new milestone. Ninety percent of all waste we collect is now diverted from landfill through recycling and composting partnerships.",
   },
 ];
 
-const Newsletter = () => {
-  return (
-    <>
-      {/* Hero */}
-      <section className="bg-gradient-eco text-primary-foreground py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm uppercase tracking-wider opacity-80 font-semibold mb-3">Learn &amp; Subscribe</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Newsletter &amp; Waste Tips Hub</h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            Expert advice on responsible waste disposal, recycling guides, regulatory updates, and company news — delivered to your inbox.
-          </p>
-        </div>
-      </section>
+const subscriberBenefits = [
+  "Waste disposal and recycling tips",
+  "Environmental regulation updates",
+  "Company news and project highlights",
+  "Offers available to subscribers only",
+];
 
-      {/* Newsletter Signup — Hero Style */}
-      <section className="py-16 bg-foreground text-background">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Mail className="w-6 h-6 text-primary" />
-                <p className="text-sm uppercase tracking-wider font-semibold opacity-70">Monthly Newsletter</p>
-              </div>
-              <h2 className="text-3xl font-bold mb-4">Stay Informed on Waste Management</h2>
-              <p className="opacity-80 leading-relaxed mb-6">
-                Subscribe to receive waste disposal tips, recycling advice, regulation updates, and exclusive company news — free, straight to your inbox every month.
-              </p>
-              <ul className="space-y-2 text-sm opacity-70">
-                {["Waste disposal & recycling tips", "Environmental regulation updates", "Company news & project highlights", "Exclusive offers for subscribers"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                    {item}
+const Newsletter = () => (
+  <>
+    <PageHeader
+      eyebrow="Learn and subscribe"
+      title="Waste tips and regulation updates"
+      lead="Practical advice on responsible disposal, recycling guides, regulatory changes and company news."
+      rail={[
+        { label: "Frequency", value: "Once a month" },
+        { label: "Subscribers", value: "2,000+" },
+        { label: "Covers", value: "Tips · Regulation · News" },
+        { label: "Cost", value: "Free, leave anytime" },
+      ]}
+    />
+
+    {/* Signup */}
+    <section className="border-b border-border py-section" aria-labelledby="subscribe-heading">
+      <div className="container mx-auto">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <SectionHeading
+              id="subscribe-heading"
+              align="left"
+              eyebrow="Monthly newsletter"
+              title="Stay ahead of the regulations"
+              lead="One email a month with disposal advice, recycling guides and the regulatory changes that affect Nigerian households and businesses."
+              className="mb-8"
+            />
+            <Reveal delay={120}>
+              <ul className="space-y-3">
+                {subscriberBenefits.map((b) => (
+                  <li key={b} className="flex items-center gap-3">
+                    <Check className="h-4 w-4 flex-none text-primary" aria-hidden="true" />
+                    <span className="text-[0.9375rem] text-foreground/85">{b}</span>
                   </li>
                 ))}
               </ul>
+            </Reveal>
+          </div>
+
+          <Reveal delay={180}>
+            <div className="rounded-lg border border-border bg-background p-8 shadow-professional lg:p-10">
+              <h3>Subscribe, it is free</h3>
+              <p className="mt-2 text-[0.9375rem] text-muted-foreground">
+                Join more than 2,000 subscribers.
+              </p>
+              <form
+                className="mt-7 space-y-3"
+                onSubmit={(e) => e.preventDefault()}
+                aria-label="Newsletter signup"
+              >
+                <label htmlFor="nl-name" className="sr-only">Full name</label>
+                <Input id="nl-name" placeholder="Your full name" />
+                <label htmlFor="nl-email" className="sr-only">Email address</label>
+                <Input id="nl-email" type="email" placeholder="you@example.com" />
+                <Button type="submit" size="lg" className="w-full gap-2">
+                  Subscribe
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </form>
+              <p className="mt-4 text-[0.8125rem] text-muted-foreground">
+                No spam. Leave whenever you like.
+              </p>
             </div>
-            <Card className="shadow-professional bg-background text-foreground">
-              <CardContent className="p-6 md:p-8">
-                <div className="flex items-center gap-2 mb-4">
-                  <Bell className="w-5 h-5 text-primary" />
-                  <h3 className="text-lg font-semibold">Subscribe Now — It's Free</h3>
-                </div>
-                <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-                  <Input placeholder="Your full name" />
-                  <Input type="email" placeholder="Your email address" />
-                  <Button variant="default" className="w-full gap-2">
-                    Subscribe <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </form>
-                <p className="text-xs text-muted-foreground mt-3 text-center">
-                  No spam, ever. Unsubscribe anytime. Join 2,000+ subscribers.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          </Reveal>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Featured Articles */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Featured Articles</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Waste Disposal Guides</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              In-depth articles to help you dispose of waste responsibly and understand your obligations.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {featuredArticles.map((article, i) => (
-              <Card key={i} className="shadow-card hover:shadow-eco transition-all duration-300 group">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary" className="text-xs">{article.category}</Badge>
-                    <span className="text-xs text-muted-foreground flex items-center gap-1">
-                      <Calendar className="w-3 h-3" /> {article.date}
+    {/* Articles */}
+    <section className="py-section" aria-labelledby="articles-heading">
+      <div className="container mx-auto">
+        <SectionHeading
+          id="articles-heading"
+          align="left"
+          eyebrow="Featured guides"
+          title="Disposal, done properly"
+          className="mb-14"
+        />
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2">
+          {featuredArticles.map((article, i) => {
+            const Icon = article.icon;
+            return (
+              <Reveal key={article.title} delay={i * 80} className="bg-background">
+                <article className="h-full p-7 lg:p-9">
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <Badge variant="docket">{article.category}</Badge>
+                    <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+                      {article.date}
                     </span>
                   </div>
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-2 group-hover:bg-gradient-eco group-hover:text-primary-foreground transition-all duration-300">
-                    {article.icon}
-                  </div>
-                  <CardTitle className="text-xl leading-snug">{article.title}</CardTitle>
-                  <CardDescription className="text-xs">{article.readTime}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{article.content}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <span className="mb-6 flex h-11 w-11 items-center justify-center rounded-md bg-brand-green-wash text-brand-green-ink">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="mb-2">{article.title}</h3>
+                  <p className="mb-4 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+                    {article.readTime}
+                  </p>
+                  <p className="text-[0.9375rem] leading-relaxed text-muted-foreground">
+                    {article.content}
+                  </p>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Quick Tips Grid */}
-      <section className="py-20 bg-muted/40">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Quick Tips</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Waste Disposal Tips</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Simple, actionable advice you can apply today to reduce waste and help the environment.
-            </p>
-          </div>
+    {/* Quick tips */}
+    <section className="border-y border-border bg-secondary/50 py-section" aria-labelledby="tips-heading">
+      <div className="container mx-auto">
+        <SectionHeading
+          id="tips-heading"
+          align="left"
+          eyebrow="Quick tips"
+          title="Six habits worth keeping"
+          className="mb-14"
+        />
+        <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {quickTips.map((tip, i) => {
+            const Icon = tip.icon;
+            return (
+              <Reveal key={tip.title} delay={i * 60} className="bg-background">
+                <div className="flex h-full gap-4 p-7">
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-secondary text-brand-navy">
+                    <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3 className="mb-1.5 text-[1.0625rem]">{tip.title}</h3>
+                    <p className="text-[0.875rem] leading-relaxed text-muted-foreground">
+                      {tip.content}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {quickTips.map((tip, i) => (
-              <Card key={i} className="shadow-card hover:shadow-eco transition-all duration-300">
-                <CardContent className="p-5">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                      {tip.icon}
-                    </div>
+    {/* Regulation and news */}
+    <section className="py-section" aria-label="Regulation updates and company news">
+      <div className="container mx-auto grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p className="eyebrow eyebrow-rule mb-6">Regulation updates</p>
+          <ul className="border-t border-border">
+            {regulationUpdates.map((item, i) => (
+              <Reveal key={item.title} as="li" delay={i * 80} className="border-b border-border py-6">
+                <div className="mb-2.5 flex items-center justify-between gap-4">
+                  <Badge variant="blue">Regulation</Badge>
+                  <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+                    {item.date}
+                  </span>
+                </div>
+                <h3 className="mb-2 text-[1.0625rem]">{item.title}</h3>
+                <p className="text-[0.875rem] leading-relaxed text-muted-foreground">
+                  {item.summary}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="eyebrow eyebrow-rule mb-6">Company news</p>
+          <ul className="border-t border-border">
+            {companyNews.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.title} as="li" delay={i * 80} className="border-b border-border py-6">
+                  <div className="mb-2.5 flex items-center justify-between gap-4">
+                    <Badge variant="green">News</Badge>
+                    <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-muted-foreground">
+                      {item.date}
+                    </span>
+                  </div>
+                  <div className="flex gap-3.5">
+                    <span className="mt-0.5 flex h-9 w-9 flex-none items-center justify-center rounded-md bg-secondary text-brand-navy">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </span>
                     <div>
-                      <h4 className="text-sm font-semibold text-foreground mb-1">{tip.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{tip.content}</p>
+                      <h3 className="mb-2 text-[1.0625rem]">{item.title}</h3>
+                      <p className="text-[0.875rem] leading-relaxed text-muted-foreground">
+                        {item.summary}
+                      </p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </Reveal>
+              );
+            })}
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Regulation Updates & Company News — Two Columns */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Regulations */}
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <Scale className="w-5 h-5 text-primary" />
-                <h3 className="text-2xl font-bold text-foreground">Regulation Updates</h3>
-              </div>
-              <div className="space-y-4">
-                {regulationUpdates.map((item, i) => (
-                  <Card key={i} className="shadow-sm">
-                    <CardContent className="p-5">
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge variant="outline" className="text-xs border-primary/30 text-primary">Regulation</Badge>
-                        <span className="text-xs text-muted-foreground">{item.date}</span>
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground mb-1">{item.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{item.summary}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            {/* Company News */}
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <Newspaper className="w-5 h-5 text-primary" />
-                <h3 className="text-2xl font-bold text-foreground">Company News</h3>
-              </div>
-              <div className="space-y-4">
-                {companyNews.map((item, i) => (
-                  <Card key={i} className="shadow-sm">
-                    <CardContent className="p-5">
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge className="text-xs bg-accent/10 text-accent border-accent/20">News</Badge>
-                        <span className="text-xs text-muted-foreground">{item.date}</span>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                          {item.icon}
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-semibold text-foreground mb-1">{item.title}</h4>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{item.summary}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final Subscribe CTA */}
-      <section className="py-16 bg-gradient-eco text-primary-foreground text-center">
-        <div className="container mx-auto px-4">
-          <Mail className="w-10 h-10 mx-auto mb-4 opacity-80" />
-          <h2 className="text-3xl font-bold mb-4">Don't Miss Our Next Issue</h2>
-          <p className="text-lg opacity-90 mb-8 max-w-xl mx-auto">
-            Join 2,000+ subscribers getting monthly waste management insights, recycling tips, and exclusive updates from Waste Masters.
+    {/* Final subscribe */}
+    <section className="on-navy bg-gradient-navy py-section" aria-labelledby="nl-cta">
+      <div className="container mx-auto max-w-2xl text-center">
+        <Reveal>
+          <h2 id="nl-cta" className="text-white">
+            Do not miss the next issue
+          </h2>
+          <p className="lead mx-auto mt-5 max-w-lg text-white/70">
+            Monthly waste management insight, recycling advice and updates from
+            the Waste Masters team.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+          <form
+            className="mx-auto mt-9 flex max-w-md flex-col gap-3 sm:flex-row"
+            onSubmit={(e) => e.preventDefault()}
+            aria-label="Newsletter signup"
+          >
+            <label htmlFor="nl-email-footer" className="sr-only">Email address</label>
             <Input
+              id="nl-email-footer"
               type="email"
-              placeholder="Your email address"
-              className="bg-background/10 border-background/20 text-background placeholder:text-background/50 flex-1"
+              placeholder="you@example.com"
+              className="flex-1 border-white/20 bg-white/[0.06] text-white placeholder:text-white/40 hover:border-white/35 focus-visible:border-primary-light focus-visible:ring-primary-light/30"
             />
-            <Button className="bg-background text-foreground hover:bg-background/90 gap-2">
-              Subscribe <ArrowRight className="w-4 h-4" />
+            <Button type="submit" size="lg" className="gap-2">
+              Subscribe
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
           </form>
-        </div>
-      </section>
-    </>
-  );
-};
+        </Reveal>
+      </div>
+    </section>
+  </>
+);
 
 export default Newsletter;

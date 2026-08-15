@@ -2,67 +2,71 @@ import { useState, useEffect } from "react";
 import { Phone, MessageCircle, ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const whatsappHref =
+  "https://wa.me/2348033036016?text=Hello%2C%20I%27d%20like%20a%20quote%20for%20waste%20collection.";
 
 const FloatingButtons = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setShowScrollTop(window.scrollY > 500);
+    const handleScroll = () => setShowScrollTop(window.scrollY > 600);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
   return (
     <>
-      {/* Floating Get Quote — mobile only (visible when scrolled) */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 sm:hidden p-3 bg-background/95 backdrop-blur-md border-t border-border shadow-professional">
+      {/* Mobile action bar. On a phone this is the whole booking journey. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 p-3 shadow-professional backdrop-blur-md sm:hidden">
         <div className="flex gap-2">
-          <a href="tel:+2348033036016" className="flex-1" aria-label="Call us">
-            <Button variant="outline" className="w-full gap-2" size="sm">
-              <Phone className="w-4 h-4" aria-hidden="true" /> Call
+          <a href="tel:+2348033036016" aria-label="Call Waste Masters">
+            <Button variant="outline" size="icon" className="shrink-0">
+              <Phone className="h-4 w-4" aria-hidden="true" />
+            </Button>
+          </a>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Message Waste Masters on WhatsApp"
+          >
+            <Button variant="outline" size="icon" className="shrink-0">
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </Button>
           </a>
           <Link to="/contact" className="flex-1">
-            <Button variant="default" className="w-full gap-2" size="sm">
-              Get a Quote
-            </Button>
+            <Button className="w-full">Get a quote</Button>
           </Link>
         </div>
       </div>
 
-      {/* Floating side buttons */}
-      <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col gap-3">
-        {/* Scroll to top */}
+      {/* Desktop: one way to start a chat, one way back to the top. */}
+      <div className="fixed bottom-6 right-6 z-50 hidden flex-col gap-3 sm:flex">
         <button
-          onClick={scrollToTop}
-          className={`w-12 h-12 rounded-full bg-muted text-muted-foreground hover:bg-foreground hover:text-background flex items-center justify-center shadow-card transition-all duration-300 ${
-            showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-          }`}
-          aria-label="Scroll to top"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={cn(
+            "flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-muted-foreground shadow-card transition-all duration-300 ease-out-expo hover:border-brand-navy hover:text-brand-navy",
+            showScrollTop
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none translate-y-3 opacity-0"
+          )}
+          aria-label="Back to top"
+          aria-hidden={!showScrollTop}
+          tabIndex={showScrollTop ? 0 : -1}
         >
-          <ArrowUp className="w-5 h-5" />
+          <ArrowUp className="h-5 w-5" />
         </button>
 
-        {/* WhatsApp */}
         <a
-          href="https://wa.me/2348033036016?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20your%20waste%20collection%20services."
+          href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 rounded-full bg-primary hover:bg-primary-dark text-primary-foreground flex items-center justify-center shadow-eco transition-all duration-300 hover:scale-110 animate-float"
-          aria-label="Chat on WhatsApp"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-eco transition-transform duration-300 ease-out-expo hover:scale-110 hover:bg-primary-dark"
+          aria-label="Message Waste Masters on WhatsApp"
         >
-          <MessageCircle className="w-6 h-6" />
-        </a>
-
-        {/* Click to call */}
-        <a
-          href="tel:+2348033036016"
-          className="w-14 h-14 rounded-full bg-accent hover:bg-accent-light text-accent-foreground flex items-center justify-center shadow-professional transition-all duration-300 hover:scale-110"
-          aria-label="Call us"
-        >
-          <Phone className="w-6 h-6" />
+          <MessageCircle className="h-6 w-6" />
         </a>
       </div>
     </>

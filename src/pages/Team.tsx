@@ -1,186 +1,233 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Handshake, ArrowRight, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Linkedin, Mail, Handshake } from "lucide-react";
+import PageHeader from "@/components/PageHeader";
+import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
-import teamMd from "@/assets/team-md.jpg";
 import teamOps from "@/assets/team-ops.jpg";
 import teamSupervisor from "@/assets/team-supervisor.jpg";
 import teamRecycling from "@/assets/team-recycling.jpg";
 import teamCs from "@/assets/team-cs.jpg";
-
 import teamCeo from "@/assets/team-ceo.jpg";
 
-const teamMembers = [
-  {
-    name: "Dr. Ian Abraham Gobo",
-    role: "Founder & Chief Executive Officer",
-    photo: teamCeo,
-    bio: "",
-  },
+const leader = {
+  name: "Dr. Ian Abraham Gobo",
+  role: "Founder and Chief Executive Officer",
+  photo: teamCeo,
+  paragraphs: [
+    "Dr. Ian Abraham Gobo is the Founder and Chief Executive Officer of Waste Masters Limited, and a seasoned environmental management professional with over three decades of experience in solid waste management and environmental sanitation systems.",
+    "Before founding the company, he served for more than twenty years with the Rivers State Environmental Sanitation Authority, now the Rivers State Waste Management Agency, holding several administrative and operational leadership positions including Head of Waste Operations.",
+    "He holds a Doctorate from Leeds Beckett University in the United Kingdom. His doctoral research examined the relationship between innovation management and increased business sustainability in SMEs managing solid wastes in Nigeria.",
+    "He is a Member of the Chartered Institution of Wastes Management in the United Kingdom, and a Fellow of the Waste Management Association of Nigeria.",
+  ],
+};
+
+const team = [
   {
     name: "Amina Ibrahim",
     role: "Operations Manager",
     photo: teamOps,
-    bio: "Amina brings a decade of expertise in logistics and fleet coordination. She manages day-to-day operations across Abuja, Lagos, and Port Harcourt — ensuring our GPS-tracked tricycles and collection teams deliver on time, every time, while optimising routes for efficiency.",
+    bio: "A decade in logistics and fleet coordination. Amina runs day-to-day operations across all three cities, keeping the GPS-tracked tricycles and collection crews on time and on the most efficient route.",
   },
   {
     name: "Tunde Adeyemo",
     role: "Waste Collection Supervisor",
     photo: teamSupervisor,
-    bio: "Tunde leads our field teams with hands-on experience in residential and commercial waste collection. He ensures safety protocols are followed, quality standards are met, and every pickup is handled with professionalism — from single-bag collections to full site clearances.",
+    bio: "Tunde leads the field crews. He holds the safety protocols and the quality standard on every pickup, from a single-bag collection to a full site clearance.",
   },
   {
     name: "Ngozi Eze",
     role: "Recycling Specialist",
     photo: teamRecycling,
-    bio: "Ngozi holds a degree in Environmental Science and oversees Waste Masters' recycling and waste diversion programmes. She develops partnerships with certified processing facilities and ensures up to 90% of collected waste is diverted from landfills through recycling and composting.",
+    bio: "An environmental science graduate who runs our recycling and diversion programmes, and builds the partnerships with certified processing facilities that keep 90% of collections out of landfill.",
   },
   {
     name: "Samuel Okoro",
     role: "Customer Service Coordinator",
     photo: teamCs,
-    bio: "Samuel is the voice of Waste Masters. He manages customer communications, handles bookings and quote requests, and ensures every client receives a responsive, friendly, and solution-oriented experience — whether by phone, WhatsApp, or email.",
+    bio: "Samuel is the voice of Waste Masters. Bookings, quotes and questions come through him, by phone, WhatsApp or email, and none of them sit unanswered.",
   },
 ];
 
-const Team = () => {
-  return (
-    <>
-      {/* Hero */}
-      <section className="bg-gradient-eco text-primary-foreground py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-sm uppercase tracking-wider opacity-80 font-semibold mb-3">Our People</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Meet Our Team</h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
-            The dedicated professionals behind Waste Masters Limited — passionate about clean spaces, sustainable communities, and exceptional service.
-          </p>
+const teamStats = [
+  { figure: "50+", label: "Team members" },
+  { figure: "3", label: "Cities" },
+  { figure: "6", label: "Days a week" },
+];
+
+const Team = () => (
+  <>
+    <PageHeader
+      eyebrow="Our people"
+      title="The crew behind the collection"
+      lead="Fifty people who care about clean spaces, sustainable communities and turning up when they said they would."
+      rail={[
+        { label: "Team size", value: "50+ across three cities" },
+        { label: "Leadership", value: "30+ years in the sector" },
+        { label: "Operating days", value: "Mon to Sat" },
+        { label: "Field training", value: "Health, safety, environment" },
+      ]}
+    />
+
+    {/* Leader */}
+    <section className="py-section" aria-labelledby="leader-heading">
+      <div className="container mx-auto">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)] lg:gap-16">
+          <Reveal>
+            <div className="overflow-hidden rounded-lg photo-edge">
+              <img
+                src={leader.photo}
+                alt={leader.name}
+                className="aspect-[4/5] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={120} className="lg:self-center">
+            <p className="eyebrow eyebrow-rule mb-5">Founder and CEO</p>
+            <h2 id="leader-heading">{leader.name}</h2>
+            <p className="mt-2 text-[0.9375rem] font-medium text-brand-blue-ink">
+              {leader.role}
+            </p>
+            <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
+              {leader.paragraphs.map((p) => (
+                <p key={p.slice(0, 32)}>{p}</p>
+              ))}
+            </div>
+            <div className="mt-8 flex gap-2.5">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                aria-label={`${leader.name} on LinkedIn`}
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+              <a
+                href="mailto:info@wastemastersltd.com"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                aria-label={`Email ${leader.name}`}
+              >
+                <Mail className="h-4 w-4" />
+              </a>
+            </div>
+          </Reveal>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Team Grid */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          {/* Featured — Managing Director */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <Card className="shadow-professional overflow-hidden">
-              <CardContent className="p-0">
-                <div className="grid md:grid-cols-[280px_1fr] items-stretch">
-                  <div className="aspect-square md:aspect-auto">
-                    <img
-                      src={teamMembers[0].photo}
-                      alt={teamMembers[0].name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-8 md:p-10 flex flex-col justify-center">
-                    <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-1">Founder &amp; CEO</p>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-1">{teamMembers[0].name}</h3>
-                    <p className="text-primary font-medium mb-4">{teamMembers[0].role}</p>
-                    <div className="text-muted-foreground leading-relaxed space-y-3 text-sm">
-                      <p>Dr. Ian Abraham Gobo is the Founder and Chief Executive Officer of Waste Masters Limited and a seasoned environmental management professional with over three decades of experience in solid waste management and environmental sanitation systems.</p>
-                      <p>Before founding Waste Masters Limited, Dr. Gobo served for more than twenty years with the Rivers State Environmental Sanitation Authority—now the Rivers State Waste Management Agency—where he held several administrative and operational leadership positions, including Head of Waste Operations.</p>
-                      <p>Dr. Gobo holds a Doctorate from Leeds Beckett University, United Kingdom. His doctoral research examined <em>"The Relationship Between Innovation Management and Increased Business Sustainability in SMEs Managing Solid Wastes in Nigeria."</em></p>
-                      <p>He is a Member of the Chartered Institution of Wastes Management (CIWM), United Kingdom, and a Fellow of the Waste Management Association of Nigeria (WAMASON).</p>
-                      <p>Through Waste Masters Limited, Dr. Gobo is applying his extensive public sector and industry experience to develop modern, technology-driven waste management solutions that support cleaner cities, environmental sustainability, and improved public health across Nigeria.</p>
-                    </div>
-                    <div className="flex gap-3 mt-6">
-                      <a href="#" className="w-9 h-9 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="LinkedIn">
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                      <a href="mailto:info@wastemastersltd.com" className="w-9 h-9 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="Email">
-                        <Mail className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+    {/* Team */}
+    <section className="border-y border-border bg-secondary/50 py-section" aria-labelledby="team-heading">
+      <div className="container mx-auto">
+        <SectionHeading
+          id="team-heading"
+          align="left"
+          eyebrow="Leadership team"
+          title="Who runs what"
+          className="mb-14"
+        />
 
-          {/* Rest of team */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {teamMembers.slice(1).map((member, i) => (
-              <Card key={i} className="shadow-card hover:shadow-eco transition-all duration-300 overflow-hidden group">
-                <div className="aspect-[4/5] overflow-hidden">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((member, i) => (
+            <Reveal key={member.name} delay={i * 90}>
+              <article className="group h-full overflow-hidden rounded-lg border border-border bg-background shadow-card">
+                <div className="aspect-[4/5] overflow-hidden bg-secondary">
                   <img
                     src={member.photo}
                     alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
-                <CardContent className="p-5">
-                  <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-                  <p className="text-sm text-primary font-medium mb-3">{member.role}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
-                  <div className="flex gap-2 mt-4">
-                    <a href="#" className="w-8 h-8 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="LinkedIn">
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </a>
-                    <a href="#" className="w-8 h-8 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors" aria-label="Email">
-                      <Mail className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                <div className="p-6">
+                  <h3>{member.name}</h3>
+                  <p className="mb-3.5 mt-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-brand-blue-ink">
+                    {member.role}
+                  </p>
+                  <p className="text-[0.875rem] leading-relaxed text-muted-foreground">
+                    {member.bio}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Committed Section */}
-      <section className="py-20 bg-foreground text-background">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-            <Handshake className="w-8 h-8 text-primary" />
+    {/* Committed */}
+    <section className="on-navy relative overflow-hidden bg-gradient-navy py-section" aria-labelledby="committed-heading">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 top-10 h-[30rem] w-[30rem] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, hsl(var(--green)) 0%, transparent 68%)" }}
+      />
+      <div className="container relative mx-auto">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <span className="mb-7 flex h-12 w-12 items-center justify-center rounded-md bg-white/10 text-brand-green">
+              <Handshake className="h-[1.375rem] w-[1.375rem]" aria-hidden="true" />
+            </span>
+            <h2 id="committed-heading" className="text-white">
+              Our strength is the people, not the trucks
+            </h2>
+            <div className="mt-6 space-y-5 leading-relaxed text-white/70">
+              <p>
+                From the Chief Executive to every field operative, the team works
+                as one unit: coordinating logistics, holding environmental
+                compliance and putting the customer first on every job.
+              </p>
+              <p>
+                Our Operations Manager plans the routes. Our Collection
+                Supervisor holds the standard on the ground. Our Recycling
+                Specialist drives landfill diversion. Our Customer Service
+                Coordinator makes sure nothing gets lost between the first
+                enquiry and the final pickup.
+              </p>
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Committed to Responsible Waste Management
-          </h2>
-          <p className="text-lg opacity-80 leading-relaxed mb-4">
-            At Waste Masters, our strength lies in our people. From the Managing Director to every field operative, our team works as a unified force — coordinating logistics, ensuring environmental compliance, and putting customer needs first on every job.
-          </p>
-          <p className="text-lg opacity-80 leading-relaxed mb-4">
-            Our Operations Manager plans efficient collection routes while our Waste Collection Supervisor ensures on-the-ground excellence. Our Recycling Specialist drives landfill diversion through innovative partnerships, and our Customer Service Coordinator guarantees a seamless experience from first enquiry to final pickup.
-          </p>
-          <p className="text-lg opacity-80 leading-relaxed mb-8">
-            Together, we deliver reliable waste removal and sustainable disposal — building cleaner communities across Nigeria, one collection at a time.
-          </p>
-          <div className="grid grid-cols-3 gap-6 max-w-md mx-auto mb-10">
-            <div>
-              <p className="text-3xl font-bold text-primary">50+</p>
-              <p className="text-sm opacity-60">Team Members</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary">3</p>
-              <p className="text-sm opacity-60">Cities</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary">6 Days</p>
-              <p className="text-sm opacity-60">Per Week</p>
-            </div>
-          </div>
+
+          <Reveal delay={140} className="lg:self-center">
+            <dl className="overflow-hidden rounded-lg border border-white/15">
+              {teamStats.map((s) => (
+                <div
+                  key={s.label}
+                  className="flex items-center justify-between gap-6 border-b border-white/10 px-7 py-6 last:border-b-0"
+                >
+                  <dt className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-white/55">
+                    {s.label}
+                  </dt>
+                  <dd className="figure text-[2.25rem] text-white">{s.figure}</dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-gradient-eco text-primary-foreground text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Want to Join Our Team?</h2>
-          <p className="text-lg opacity-90 mb-8 max-w-xl mx-auto">
-            We're always looking for passionate people who care about clean communities and responsible waste management.
+    {/* CTA */}
+    <section className="py-section" aria-labelledby="team-cta">
+      <div className="container mx-auto max-w-3xl text-center">
+        <Reveal>
+          <h2 id="team-cta">Want to join the crew?</h2>
+          <p className="lead mx-auto mt-5 max-w-xl">
+            We are always looking for people who care about clean communities and
+            do the job properly when nobody is watching.
           </p>
-          <Link to="/contact">
-            <Button size="lg" className="text-lg px-8 bg-background text-foreground hover:bg-background/90 gap-2">
-              Get in Touch <ArrowRight className="w-5 h-5" />
+          <Link to="/contact" className="mt-10 inline-block">
+            <Button size="xl" className="gap-2">
+              Get in touch
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Button>
           </Link>
-        </div>
-      </section>
-    </>
-  );
-};
+        </Reveal>
+      </div>
+    </section>
+  </>
+);
 
 export default Team;

@@ -9,12 +9,22 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+          "border-transparent bg-primary text-primary-foreground",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border-transparent bg-secondary text-secondary-foreground",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
+          "border-transparent bg-destructive text-destructive-foreground",
+        outline: "border-border text-foreground",
+        /* Docket label: the waste-transfer-note voice, for metadata
+           that is a fact about the item rather than a status. */
+        docket:
+          "rounded-[4px] border-border bg-secondary px-2 py-1 font-mono text-[0.625rem] font-medium uppercase leading-none tracking-[0.14em] text-brand-navy",
+        blue:
+          "border-transparent bg-brand-blue-wash text-brand-blue-ink",
+        green:
+          "border-transparent bg-brand-green-wash text-brand-green-ink",
+        onDark:
+          "border-white/20 bg-white/10 text-white backdrop-blur-sm",
       },
     },
     defaultVariants: {
