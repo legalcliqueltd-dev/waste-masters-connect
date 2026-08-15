@@ -11,9 +11,7 @@ import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Reveal from "@/components/Reveal";
 
-import galleryHouseLoading from "@/assets/gallery-house-loading.jpg";
 import galleryConstruction1 from "@/assets/gallery-construction-1.jpg";
-import galleryGarden1 from "@/assets/gallery-garden-1.jpg";
 import galleryCommercial1 from "@/assets/gallery-commercial-1.jpg";
 import truck0085 from "@/assets/truck-0085.jpg.asset.json";
 import truck0089 from "@/assets/truck-0089.jpg.asset.json";
