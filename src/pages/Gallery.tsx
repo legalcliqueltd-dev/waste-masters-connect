@@ -12,8 +12,9 @@ import galleryConstruction2 from "@/assets/gallery-construction-2.jpg";
 import galleryGarden1 from "@/assets/gallery-garden-1.jpg";
 import galleryGarden2 from "@/assets/gallery-garden-2.jpg";
 import galleryCommercial1 from "@/assets/gallery-commercial-1.jpg";
-import galleryEquipment from "@/assets/gallery-equipment.jpg";
-import galleryEquipment2 from "@/assets/gallery-equipment-2.jpg";
+import truck0085 from "@/assets/truck-0085.jpg.asset.json";
+import truck0087 from "@/assets/truck-0087.jpg.asset.json";
+import truck0089 from "@/assets/truck-0089.jpg.asset.json";
 
 type Category = "All" | "House Clearances" | "Construction Waste" | "Garden Waste" | "Commercial & Equipment";
 
@@ -87,15 +88,21 @@ const galleryItems: GalleryItem[] = [
     category: "Commercial & Equipment",
   },
   {
-    src: galleryEquipment,
-    alt: "Fleet of solar-powered waste collection tricycles",
-    caption: "Our fleet of solar-powered collection tricycles ready for daily waste pickups across the city — eco-friendly and efficient.",
+    src: truck0085.url,
+    alt: "Waste Masters DAF CF refuse compactor truck ready for collection",
+    caption: "Our DAF CF rear-loader compactor trucks on site — the backbone of our daily commercial and residential collections.",
     category: "Commercial & Equipment",
   },
   {
-    src: galleryEquipment2,
-    alt: "Waste bins and recycling containers at depot",
-    caption: "Branded waste bins and recycling containers at our equipment depot — sorted and ready for deployment to clients.",
+    src: truck0087.url,
+    alt: "Rear loader mechanism of a Waste Masters compactor truck",
+    caption: "Rear-loading compaction unit — Lean and Green certified equipment built for low-emission, high-capacity collection.",
+    category: "Commercial & Equipment",
+  },
+  {
+    src: truck0089.url,
+    alt: "Side view of Waste Masters green refuse compactor truck",
+    caption: "Full side profile of one of our compactor trucks stationed in a Lagos residential estate before the morning round.",
     category: "Commercial & Equipment",
   },
 ];
