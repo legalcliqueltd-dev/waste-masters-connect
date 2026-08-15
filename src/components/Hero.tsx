@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-waste-truck.jpg";
+import heroAsset from "@/assets/truck-0086.jpg.asset.json";
+const heroImage = heroAsset.url;
 import { Shield, Zap, Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -11,7 +12,7 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
         role="img"
-        aria-label="Waste Masters solar tricycle fleet ready for waste collection"
+        aria-label="Waste Masters DAF CF waste collection truck parked on site"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 via-foreground/75 to-foreground/40" />
       </div>
