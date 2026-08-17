@@ -1,0 +1,57 @@
+# Waste Masters Limited — Apache / LiteSpeed configuration
+#
+# Vite copies everything in public/ into dist/, and the deploy workflow uploads
+# dist/ to the server root, so this file lands beside index.html.
+
+# Content negotiation can hijack extensionless paths such as /team before the
+# rewrite below ever runs. Guarded, because an unsupported directive here
+# would return 500 for the whole site rather than degrade quietly.
+<IfModule mod_negotiation.c>
+  Options -MultiViews
+</IfModule>
+
+# ── Client-side routing ───────────────────────────────────────────────────────
+# The site is a single-page app: React Router owns /team, /services and the
+# rest. Those paths exist only in the browser, so a refresh or a direct link
+# asks the server for a file that was never built, and the host answers with
+# its own 404. Hand every non-file request to index.html and let the app route.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Real files and directories are served as they are.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else is a route, not a file.
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# ── Caching ───────────────────────────────────────────────────────────────────
+# Vite fingerprints filenames under /assets/, so scripts, styles and fonts can
+# be cached hard. index.html must always be revalidated, otherwise a deploy
+# never reaches anyone who has visited before.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Favicons and other public/ images keep their names between builds, so they
+  # get a shorter life than the fingerprinted assets.
+  <FilesMatch "\.(jpe?g|png|gif|svg|webp|avif|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ── Compression ───────────────────────────────────────────────────────────────
+# Matters on the mobile connections most of this audience is on.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
