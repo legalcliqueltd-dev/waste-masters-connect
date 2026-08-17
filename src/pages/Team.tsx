@@ -4,51 +4,92 @@ import { ArrowRight, Linkedin, Mail, Handshake } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import { cn } from "@/lib/utils";
 
-import teamOps from "@/assets/team-ops.jpg";
-import teamSupervisor from "@/assets/team-supervisor.jpg";
-import teamRecycling from "@/assets/team-recycling.jpg";
-import teamCs from "@/assets/team-cs.jpg";
 import teamCeo from "@/assets/team-ceo.jpg";
+import teamExecutiveDirector from "@/assets/team-executive-director.jpg";
+import teamTechnology from "@/assets/team-technology.jpg";
 
-const leader = {
-  name: "Dr. Ian Abraham Gobo",
-  role: "Founder and Chief Executive Officer",
-  photo: teamCeo,
-  paragraphs: [
-    "Dr. Ian Abraham Gobo is the Founder and Chief Executive Officer of Waste Masters Limited, and a seasoned environmental management professional with over three decades of experience in solid waste management and environmental sanitation systems.",
-    "Before founding the company, he served for more than twenty years with the Rivers State Environmental Sanitation Authority, now the Rivers State Waste Management Agency, holding several administrative and operational leadership positions including Head of Waste Operations.",
-    "He holds a Doctorate from Leeds Beckett University in the United Kingdom. His doctoral research examined the relationship between innovation management and increased business sustainability in SMEs managing solid wastes in Nigeria.",
-    "He is a Member of the Chartered Institution of Wastes Management in the United Kingdom, and a Fellow of the Waste Management Association of Nigeria.",
-  ],
-};
+interface Leader {
+  id: string;
+  eyebrow: string;
+  name: string;
+  role: string;
+  /** Omit until a real photograph is available; a monogram stands in. */
+  photo?: string;
+  paragraphs: string[];
+  email: string;
+  /** Only rendered when a real profile exists. */
+  linkedin?: string;
+}
 
-const team = [
+const leaders: Leader[] = [
   {
-    name: "Amina Ibrahim",
-    role: "Operations Manager",
-    photo: teamOps,
-    bio: "A decade in logistics and fleet coordination. Amina runs day-to-day operations across all three cities, keeping the GPS-tracked tricycles and collection crews on time and on the most efficient route.",
+    id: "ian-gobo",
+    eyebrow: "Founder and CEO",
+    name: "Dr. Ian Abraham Gobo",
+    role: "Founder and Chief Executive Officer",
+    photo: teamCeo,
+    email: "info@wastemastersltd.com",
+    paragraphs: [
+      "Dr. Ian Abraham Gobo is the Founder and Chief Executive Officer of Waste Masters Limited, and a seasoned environmental management professional with over three decades of experience in solid waste management and environmental sanitation systems.",
+      "Before founding the company, he served for more than twenty years with the Rivers State Environmental Sanitation Authority, now the Rivers State Waste Management Agency, holding several administrative and operational leadership positions including Head of Waste Operations.",
+      "He holds a Doctorate from Leeds Beckett University in the United Kingdom. His doctoral research examined the relationship between innovation management and increased business sustainability in SMEs managing solid wastes in Nigeria.",
+      "He is a Member of the Chartered Institution of Wastes Management in the United Kingdom, and a Fellow of the Waste Management Association of Nigeria.",
+    ],
   },
   {
-    name: "Tunde Adeyemo",
-    role: "Waste Collection Supervisor",
-    photo: teamSupervisor,
-    bio: "Tunde leads the field crews. He holds the safety protocols and the quality standard on every pickup, from a single-bag collection to a full site clearance.",
-  },
-  {
-    name: "Ngozi Eze",
-    role: "Recycling Specialist",
-    photo: teamRecycling,
-    bio: "An environmental science graduate who runs our recycling and diversion programmes, and builds the partnerships with certified processing facilities that keep 90% of collections out of landfill.",
-  },
-  {
-    name: "Samuel Okoro",
-    role: "Customer Service Coordinator",
-    photo: teamCs,
-    bio: "Samuel is the voice of Waste Masters. Bookings, quotes and questions come through him, by phone, WhatsApp or email, and none of them sit unanswered.",
+    id: "onome-ian-gobo",
+    eyebrow: "Executive Director",
+    name: "Onome Diamond Ian-Gobo, Esq.",
+    role: "Executive Director, Waste Masters Limited",
+    photo: teamExecutiveDirector,
+    email: "info@wastemastersltd.com",
+    paragraphs: [
+      "Onome Diamond Ian-Gobo is a practising Barrister and Solicitor with over a decade of experience spanning corporate law, regulatory compliance, commercial advisory, and dispute resolution. As Executive Director of Waste Masters Limited, she provides strategic and operational oversight, with particular responsibility for corporate development, regulatory compliance, contractual engagements, and the delivery of the company's waste management services, including its engagement with the Rivers State Waste Management Agency.",
+      "She is the Principal Partner of Legal Clique Law Firm, where she leads a hybrid legal practice focused on corporate, commercial, real estate, regulatory, and advisory matters. She also serves as a Director of Gobeth Nigeria Limited.",
+      "A Notary Public and member of the Nigerian Bar Association, Onome brings a distinctive combination of legal expertise, commercial insight, and strategic leadership to her roles. She is currently pursuing an LL.M. in Company and Commercial Law at the University of Port Harcourt.",
+      "Prior to establishing her private practice, she served as Senior Special Assistant (Legal) to a Member of the National Assembly of Nigeria and held legal advisory roles supporting corporate compliance, governance, and dispute management across the public and private sectors.",
+      "At Waste Masters Limited, she is committed to strengthening the company's corporate standards, operational excellence, and sustainable approach to waste management, advancing its vision to turn waste to wealth.",
+    ],
   },
 ];
+
+interface TeamMember {
+  name: string;
+  role: string;
+  /** Omit until a real photograph is available; a monogram stands in. */
+  photo?: string;
+  bio: string;
+}
+
+const team: TeamMember[] = [
+  {
+    name: "Benjamin",
+    role: "Operations Manager",
+    bio: "Benjamin oversees day-to-day collection across Abuja, Lagos and Port Harcourt, planning the rounds and keeping the crews and the fleet on schedule.",
+  },
+  {
+    name: "Duye Abraham-Ake",
+    role: "Head of Technology",
+    photo: teamTechnology,
+    bio: "Duye keeps the systems behind the service running: GPS tracking across the fleet, the digital scheduling that plans each round, and the SMS alerts customers get on collection day. He also builds and maintains the company's website and booking flow.",
+  },
+];
+
+/* Titles and suffixes would otherwise produce initials like "DI" for
+   "Dr. Ian Abraham Gobo". */
+const honorifics = ["dr", "mr", "mrs", "ms", "miss", "engr", "esq", "prof"];
+
+/** Initials for the monogram placeholder, e.g. "Duye Abraham-Ake" to "DA". */
+const initialsOf = (name: string) =>
+  name
+    .split(/[\s-]+/)
+    .map((part) => part.replace(/[^A-Za-z]/g, ""))
+    .filter((part) => part && !honorifics.includes(part.toLowerCase()))
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join("");
 
 const teamStats = [
   { figure: "50+", label: "Team members" },
@@ -70,52 +111,93 @@ const Team = () => (
       ]}
     />
 
-    {/* Leader */}
-    <section className="py-section" aria-labelledby="leader-heading">
-      <div className="container mx-auto">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)] lg:gap-16">
-          <Reveal>
-            <div className="overflow-hidden rounded-lg photo-edge">
-              <img
-                src={leader.photo}
-                alt={leader.name}
-                className="aspect-[4/5] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </Reveal>
+    {/* Leadership */}
+    <section className="py-section" aria-label="Leadership">
+      <div className="container mx-auto space-y-20 lg:space-y-28">
+        {leaders.map((leader, index) => {
+          /* Alternate which side the portrait sits on. */
+          const portraitRight = index % 2 === 1;
+          return (
+            <article
+              key={leader.id}
+              id={leader.id}
+              className={cn(
+                "grid scroll-mt-32 gap-10 lg:gap-16",
+                /* The portrait column stays narrow whichever side it sits on. */
+                portraitRight
+                  ? "lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]"
+                  : "lg:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)]"
+              )}
+              aria-labelledby={`${leader.id}-heading`}
+            >
+              <Reveal
+                animation={portraitRight ? "fade-in-right" : "fade-in-left"}
+                className={cn(
+                  /* Long bios outrun the portrait, so it follows the reading. */
+                  "lg:sticky lg:top-28 lg:self-start",
+                  portraitRight && "lg:order-2"
+                )}
+              >
+                <div className="overflow-hidden rounded-lg photo-edge">
+                  {leader.photo ? (
+                    <img
+                      src={leader.photo}
+                      alt={leader.name}
+                      className="aspect-[4/5] w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div
+                      className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-3 bg-gradient-navy"
+                      role="img"
+                      aria-label={`${leader.name}, photograph to follow`}
+                    >
+                      <span className="figure text-[3.5rem] text-white/90">
+                        {initialsOf(leader.name)}
+                      </span>
+                      <span className="font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-white/40">
+                        Photo to follow
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </Reveal>
 
-          <Reveal delay={120} className="lg:self-center">
-            <p className="eyebrow eyebrow-rule mb-5">Founder and CEO</p>
-            <h2 id="leader-heading">{leader.name}</h2>
-            <p className="mt-2 text-[0.9375rem] font-medium text-brand-blue-ink">
-              {leader.role}
-            </p>
-            <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
-              {leader.paragraphs.map((p) => (
-                <p key={p.slice(0, 32)}>{p}</p>
-              ))}
-            </div>
-            <div className="mt-8 flex gap-2.5">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-                aria-label={`${leader.name} on LinkedIn`}
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="mailto:info@wastemastersltd.com"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
-                aria-label={`Email ${leader.name}`}
-              >
-                <Mail className="h-4 w-4" />
-              </a>
-            </div>
-          </Reveal>
-        </div>
+              <Reveal delay={120} className={portraitRight ? "lg:order-1" : undefined}>
+                <p className="eyebrow eyebrow-rule mb-5">{leader.eyebrow}</p>
+                <h2 id={`${leader.id}-heading`}>{leader.name}</h2>
+                <p className="mt-2 text-[0.9375rem] font-medium text-brand-blue-ink">
+                  {leader.role}
+                </p>
+                <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
+                  {leader.paragraphs.map((p) => (
+                    <p key={p.slice(0, 32)}>{p}</p>
+                  ))}
+                </div>
+                <div className="mt-8 flex gap-2.5">
+                  {leader.linkedin && (
+                    <a
+                      href={leader.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                      aria-label={`${leader.name} on LinkedIn`}
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  )}
+                  <a
+                    href={`mailto:${leader.email}`}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                    aria-label={`Email ${leader.name}`}
+                  >
+                    <Mail className="h-4 w-4" />
+                  </a>
+                </div>
+              </Reveal>
+            </article>
+          );
+        })}
       </div>
     </section>
 
@@ -130,17 +212,33 @@ const Team = () => (
           className="mb-14"
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((member, i) => (
             <Reveal key={member.name} delay={i * 90}>
               <article className="group h-full overflow-hidden rounded-lg border border-border bg-background shadow-card">
                 <div className="aspect-[4/5] overflow-hidden bg-secondary">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  ) : (
+                    /* Stands in until a real photograph arrives. */
+                    <div
+                      className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-navy"
+                      role="img"
+                      aria-label={`${member.name}, photograph to follow`}
+                    >
+                      <span className="figure text-[3.5rem] text-white/90">
+                        {initialsOf(member.name)}
+                      </span>
+                      <span className="font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-white/40">
+                        Photo to follow
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <h3>{member.name}</h3>
