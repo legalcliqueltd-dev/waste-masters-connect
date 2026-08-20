@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 import teamCeo from "@/assets/team-ceo.jpg";
 import teamExecutiveDirector from "@/assets/team-executive-director.jpg";
+import teamOperations from "@/assets/team-operations.jpg";
 import teamTechnology from "@/assets/team-technology.jpg";
 
 interface Leader {
@@ -66,8 +67,9 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: "Benjamin",
+    name: "Benjamin Nyikyaa",
     role: "Operations Manager",
+    photo: teamOperations,
     bio: "Benjamin oversees day-to-day collection across Abuja, Lagos and Port Harcourt, planning the rounds and keeping the crews and the fleet on schedule.",
   },
   {
