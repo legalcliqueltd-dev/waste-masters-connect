@@ -272,9 +272,9 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Press video */}
+      {/* Videos */}
       <section className="border-y border-border bg-secondary/50 py-section" aria-labelledby="gallery-video-heading">
-        <div className="container mx-auto">
+        <div className="container mx-auto space-y-16 lg:space-y-24">
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
             <SectionHeading
               id="gallery-video-heading"
@@ -289,6 +289,24 @@ const Gallery = () => {
                 id="8J-8-qzTf6w"
                 title="The Managing Director being interviewed by the press about refuse collection at Creek Road Market, Port Harcourt"
                 kicker="Press interview · Creek Road Market, Port Harcourt"
+              />
+            </Reveal>
+          </div>
+
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-16">
+            <SectionHeading
+              id="gallery-reel-heading"
+              align="left"
+              eyebrow="Highlights"
+              title="Our 2026 performance, in one reel"
+              lead="A look back at the trucks, crews and collection zones behind this year's work."
+              className="mb-0 lg:order-2"
+            />
+            <Reveal animation="scale-in" className="lg:order-1">
+              <VideoEmbed
+                id="w-NhYTAMze8"
+                title="WasteMasters 2026 Excellence Performance"
+                kicker="Highlights · 2026 performance"
               />
             </Reveal>
           </div>
